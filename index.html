@@ -23,9 +23,10 @@
     <meta name="twitter:description" content="Ontdek onze ambachtelijke bieren en premium spirits. Bezoek ons proeflokaal in Kerkrade.">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23356D52'/><text x='16' y='24' text-anchor='middle' font-size='20' fill='white'>R</text></svg>" type="image/svg+xml">
-    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23356D52'/><text x='16' y='24' text-anchor='middle' font-size='20' fill='white'>R</text></svg>" type="image/svg+xml">
-    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23356D52'/><text x='16' y='24' text-anchor='middle' font-size='20' fill='white'>R</text></svg>">
+    <link rel="icon" href="assets/Brouwerij-Rolduc.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="assets/Brouwerij-Rolduc.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Brouwerij-Rolduc.svg">
+    <link rel="mask-icon" href="assets/Brouwerij-Rolduc.svg" color="#356D52">
     <meta name="theme-color" content="#356D52">
     <meta name="msapplication-TileColor" content="#356D52">
     
@@ -575,11 +576,16 @@
                     <!-- Video Section -->
                     <div class="mt-8">
                         <h3 class="text-xl font-bold text-green-dark mb-4">Bekijk ons brouwproces</h3>
-                        <div class="aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-                            <button id="brewery-video-btn" class="bg-gold-accent text-green-dark px-6 py-3 rounded-lg hover:bg-yellow-400 transition-colors">
-                                <i class="fas fa-play mr-2"></i>
-                                Speel Video Af
-                            </button>
+                        <div class="relative aspect-video rounded-lg overflow-hidden cursor-pointer group" id="brewery-video-container">
+                            <img src="assets/Wiel.jpeg" 
+                                 alt="Brouwproces video thumbnail - Wim Wiel in de brouwerij" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all duration-300">
+                                <button id="brewery-video-btn" class="bg-gold-accent text-green-dark px-8 py-4 rounded-lg hover:bg-yellow-400 transition-colors transform group-hover:scale-105 shadow-lg">
+                                    <i class="fas fa-play mr-2 text-lg"></i>
+                                    <span class="font-semibold">Speel Video Af</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1189,7 +1195,7 @@
     <div id="video-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
         <div class="bg-white rounded-lg overflow-hidden shadow-2xl max-w-4xl w-full mx-4">
             <div class="flex justify-between items-center p-4 border-b">
-                <h3 class="text-xl font-bold text-green-dark">Brouwerij Rolduc - Beleef de Magie</h3>
+                <h3 id="video-modal-title" class="text-xl font-bold text-green-dark">Brouwerij Rolduc Video</h3>
                 <button id="close-video-modal" class="text-gray-500 hover:text-gray-700 text-2xl">
                     <i class="fas fa-times"></i>
                 </button>
