@@ -469,26 +469,36 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Function to open brewery video
     function openBreweryVideo() {
-        videoIframe.src = breweryProcessVideoUrl;
-        videoModalTitle.textContent = 'Ons Brouwproces - Van Graan tot Glas';
-        videoModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        if (videoIframe && videoModal) {
+            videoIframe.src = breweryProcessVideoUrl;
+            if (videoModalTitle) {
+                videoModalTitle.textContent = 'Ons Brouwproces - Van Graan tot Glas';
+            }
+            videoModal.style.display = 'flex';
+            videoModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
     }
     
     // Open video modal - Experience video
     if (experienceVideoBtn) {
         experienceVideoBtn.addEventListener('click', function() {
-            videoIframe.src = experienceVideoUrl;
-            videoModalTitle.textContent = 'Brouwerij Rolduc - Beleef de Magie';
-            videoModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            if (videoIframe && videoModal) {
+                videoIframe.src = experienceVideoUrl;
+                if (videoModalTitle) {
+                    videoModalTitle.textContent = 'Brouwerij Rolduc - Beleef de Magie';
+                }
+                videoModal.style.display = 'flex';
+                videoModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
         });
     }
     
     // Open video modal - Brewery process video (button)
     if (breweryVideoBtn) {
         breweryVideoBtn.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent double trigger
+            e.stopPropagation();
             openBreweryVideo();
         });
     }
@@ -502,9 +512,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close video modal
     function closeModal() {
-        videoModal.classList.add('hidden');
-        videoIframe.src = ''; // Stop video playback
-        document.body.style.overflow = 'auto'; // Restore scrolling
+        if (videoModal) {
+            videoModal.style.display = 'none';
+            videoModal.classList.add('hidden');
+        }
+        if (videoIframe) {
+            videoIframe.src = '';
+        }
+        document.body.style.overflow = 'auto';
     }
     
     if (closeVideoModal) {
