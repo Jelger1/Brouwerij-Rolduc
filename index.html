@@ -436,6 +436,7 @@
                     <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
                         <div class="beer-card">
                             <div class="beer-image-container">
+                                <div class="limited-edition">LIMITED EDITION</div>
                                 <img src="assets/Vrome-Tinus.jpeg" 
                                      alt="Vrome Tinus - Grape Ale met gist en druif">
                             </div>
@@ -449,9 +450,9 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="beer-price">€3.50</div>
-                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors add-to-cart w-full" data-name="Vrome Tinus" data-price="3.50">
-                                        Bestellen
+                                    <div class="beer-price text-green-main">Alleen in Proeflokaal</div>
+                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors w-full" onclick="document.getElementById('proeflokaal').scrollIntoView({behavior: 'smooth'})">
+                                        Reserveer Proeverij
                                     </button>
                                 </div>
                             </div>
@@ -462,6 +463,7 @@
                     <div class="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-2 md:px-4">
                         <div class="beer-card">
                             <div class="beer-image-container">
+                                <div class="limited-edition">LIMITED EDITION</div>
                                 <img src="assets/Sjwatse-Madonna.jpeg" 
                                      alt="Sjwatse Madonna - Bock Lentebock voorjaarsspecial">
                             </div>
@@ -475,9 +477,9 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="beer-price">€3.50</div>
-                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors add-to-cart w-full" data-name="Sjwatse Madonna" data-price="3.50">
-                                        Bestellen
+                                    <div class="beer-price text-green-main">Alleen in Proeflokaal</div>
+                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors w-full" onclick="document.getElementById('proeflokaal').scrollIntoView({behavior: 'smooth'})">
+                                        Reserveer Proeverij
                                     </button>
                                 </div>
                             </div>
@@ -546,13 +548,17 @@
                     <div class="bg-gold-accent p-6 rounded-lg mb-8">
                         <h3 class="text-green-dark font-bold text-xl mb-2">
                             <i class="fas fa-star mr-2"></i>
-                            Brouwerstour & Proeverij
+                            Bierproeverij & Rondleiding
                         </h3>
                         <p class="text-green-dark mb-4">
-                            Ontdek hoe ons bier wordt gemaakt! Inclusief proeverij van 4 bieren.
+                            Ontdek hoe ons bier wordt gemaakt! Met uitleg over brouwproces en bieren.
                         </p>
+                        <div class="text-green-dark text-sm mb-3">
+                            <strong>Groepen vanaf 15 personen:</strong><br>
+                            €17,00 p.p. (zonder hapjes) | €22,95 p.p. (met hapjes)
+                        </div>
                         <button class="bg-green-dark text-white px-6 py-2 rounded hover:bg-green-main transition-colors">
-                            Boek Nu - €15 p.p.
+                            Reserveer via E-mail
                         </button>
                     </div>
                     
@@ -656,20 +662,50 @@
                 
                 <!-- Booking Card -->
                 <div class="bg-white p-6 rounded-lg shadow-lg">
-                    <h4 class="text-xl font-bold text-green-dark mb-4">Reserveren</h4>
+                    <h4 class="text-xl font-bold text-green-dark mb-4">Openingstijden & Reserveren</h4>
                     
-                    <div class="space-y-4 mb-6">
-                        <div>
-                            <i class="fas fa-clock text-gold-accent mr-2"></i>
-                            <span class="text-gray-700">Vrijdag - Zondag</span>
+                    <!-- Regular Opening Hours -->
+                    <div class="mb-6">
+                        <h5 class="font-semibold text-green-dark mb-3">Reguliere Openingstijden</h5>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span>Vrijdag:</span>
+                                <span>15:00 – 17:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Zaterdag:</span>
+                                <span>13:00 – 17:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Zondag:</span>
+                                <span>12:00 – 15:00</span>
+                            </div>
                         </div>
-                        <div>
-                            <i class="fas fa-users text-gold-accent mr-2"></i>
-                            <span class="text-gray-700">2-20 personen</span>
-                        </div>
-                        <div>
-                            <i class="fas fa-euro-sign text-gold-accent mr-2"></i>
-                            <span class="text-gray-700">Vanaf €12,50 p.p.</span>
+                        <p class="text-xs text-gray-600 mt-2">
+                            Verschillende Abdijbieren proeven, eventueel gecombineerd met een kaas-worstplankje
+                        </p>
+                    </div>
+                    
+                    <!-- Extra Options -->
+                    <div class="mb-6 bg-neutral-bg p-4 rounded-lg">
+                        <h5 class="font-semibold text-green-dark mb-3">Extra Bezoekopties</h5>
+                        
+                        <div class="space-y-3">
+                            <div class="border-b border-gray-200 pb-2">
+                                <div class="font-medium text-green-dark">Beer-Flight</div>
+                                <div class="text-sm text-gray-600">Vanaf 2 personen – kies 4 bieren</div>
+                                <div class="text-sm font-semibold text-gold-accent">€22,95 per duo</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-medium text-green-dark">Bierproeverij (15+ personen)</div>
+                                <div class="text-sm text-gray-600">Met uitleg over brouwproces en bieren</div>
+                                <div class="text-sm">
+                                    <span class="text-gold-accent font-semibold">€17,00 p.p.</span> (zonder hapjes)<br>
+                                    <span class="text-gold-accent font-semibold">€22,95 p.p.</span> (met hapjes)
+                                </div>
+                                <div class="text-xs text-gray-500 mt-1">Alleen na voorafgaande reservering via e-mail</div>
+                            </div>
                         </div>
                     </div>
                     
@@ -801,9 +837,16 @@
                         <div class="text-sm text-gray-600">✓ Paters Broen & Kloeëster IPA</div>
                         <div class="text-sm text-gray-600">✓ Kølsje Jong & Roda Bier</div>
                         <div class="text-sm text-gray-600">✓ Rolducker Zwaere</div>
-                        <div class="text-sm text-gray-600">✓ Duuvels Weizen</div>
-                        <div class="text-sm text-gray-600">✓ Zondig Genot & Vrome Tinus</div>
-                        <div class="text-sm text-gray-600">✓ Sjwatse Madonna</div>
+                        <div class="text-sm text-gray-600">✓ Duuvels Weizen & Zondig Genot</div>
+                    </div>
+                    
+                    <!-- Proeflokaal Only -->
+                    <div class="bg-gold-accent p-4 rounded-lg mb-6">
+                        <h5 class="text-green-dark font-bold mb-2">
+                            <i class="fas fa-glass-cheers mr-2"></i>
+                            Exclusief in Proeflokaal
+                        </h5>
+                        <p class="text-green-dark text-sm">Vrome Tinus & Sjwatse Madonna - alleen te proeven tijdens een bezoek!</p>
                     </div>
                     
                     <!-- CTA Buttons -->
@@ -1009,7 +1052,7 @@
                         <i class="fas fa-beer text-green-dark text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-2">14 Unieke Bieren</h3>
-                    <p class="text-gray-200">Van fris Kølsje Jong tot exclusieve Barrel Aged</p>
+                    <p class="text-gray-200">Van fris Kølsje Jong tot exclusieve Barrel Aged + 2 proeflokaal specials</p>
                 </div>
                 
                 <div class="text-center">
@@ -1106,30 +1149,23 @@
                 
                 <!-- Opening Hours -->
                 <div>
-                    <h4 class="text-gold-accent font-bold mb-4">Openingstijden</h4>
+                    <h4 class="text-gold-accent font-bold mb-4">Openingstijden Proeflokaal</h4>
                     <div class="space-y-2 text-gray-300">
-                        <div class="mb-3">
-                            <span class="font-semibold text-white">Proeflokaal:</span>
+                        <div class="flex justify-between text-sm">
+                            <span>Vrijdag</span>
+                            <span>15:00 - 17:00</span>
                         </div>
                         <div class="flex justify-between text-sm">
-                            <span>Vrijdag - Zondag</span>
-                            <span>13:00 - 18:00</span>
+                            <span>Zaterdag</span>
+                            <span>13:00 - 17:00</span>
                         </div>
-                        <div class="flex justify-between text-sm opacity-75">
+                        <div class="flex justify-between text-sm">
+                            <span>Zondag</span>
+                            <span>12:00 - 15:00</span>
+                        </div>
+                        <div class="flex justify-between text-sm opacity-75 mt-3">
                             <span>Maandag - Donderdag</span>
                             <span>Gesloten</span>
-                        </div>
-                        
-                        <div class="mt-4 mb-3">
-                            <span class="font-semibold text-white">Rondleidingen:</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span>Op afspraak</span>
-                            <span>Ma - Zo</span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span>Groepen 8+ pers.</span>
-                            <span>€8,50 p.p.</span>
                         </div>
                     </div>
                 </div>
