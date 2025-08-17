@@ -457,18 +457,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // Video Modal functionality
     const videoModal = document.getElementById('video-modal');
     const videoIframe = document.getElementById('video-iframe');
+    const videoModalTitle = document.getElementById('video-modal-title');
     const experienceVideoBtn = document.getElementById('experience-video-btn');
+    const breweryVideoBtn = document.getElementById('brewery-video-btn');
+    const breweryVideoContainer = document.getElementById('brewery-video-container');
     const closeVideoModal = document.getElementById('close-video-modal');
     
-    // YouTube video URL
-    const youtubeVideoUrl = 'https://www.youtube.com/embed/uF84oyxJ-Hc?autoplay=1&rel=0&modestbranding=1';
+    // YouTube video URLs
+    const experienceVideoUrl = 'https://www.youtube.com/embed/uF84oyxJ-Hc?autoplay=1&rel=0&modestbranding=1';
+    const breweryProcessVideoUrl = 'https://www.youtube.com/embed/HjWqJNvIk7A?autoplay=1&rel=0&modestbranding=1';
     
-    // Open video modal
+    // Function to open brewery video
+    function openBreweryVideo() {
+        videoIframe.src = breweryProcessVideoUrl;
+        videoModalTitle.textContent = 'Ons Brouwproces - Van Graan tot Glas';
+        videoModal.classList.remove('hidden');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    // Open video modal - Experience video
     if (experienceVideoBtn) {
         experienceVideoBtn.addEventListener('click', function() {
-            videoIframe.src = youtubeVideoUrl;
+            videoIframe.src = experienceVideoUrl;
+            videoModalTitle.textContent = 'Brouwerij Rolduc - Beleef de Magie';
             videoModal.classList.remove('hidden');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
+    
+    // Open video modal - Brewery process video (button)
+    if (breweryVideoBtn) {
+        breweryVideoBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent double trigger
+            openBreweryVideo();
+        });
+    }
+    
+    // Open video modal - Brewery process video (container)
+    if (breweryVideoContainer) {
+        breweryVideoContainer.addEventListener('click', function() {
+            openBreweryVideo();
         });
     }
     
