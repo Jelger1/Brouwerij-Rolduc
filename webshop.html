@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webshop - Brouwerij Rolduc | Bestel Online</title>
+    <meta name="description" content="Bestel online bij Brouwerij Rolduc - authentieke abdijbieren, likeuren en merchandise direct aan huis geleverd.">
+    
+    <!-- Favicon Settings -->
+    <link rel="icon" type="image/svg+xml" href="assets/Brouwerij-Rolduc.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/Brouwerij-Rolduc.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/Brouwerij-Rolduc.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/Brouwerij-Rolduc.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#2d5016">
+    
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com?v=cache-buster-20250118"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- TailwindCSS Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-main': '#356D52',
+                        'green-light': '#8FBF9F',
+                        'neutral-bg': '#DCE3E1',
+                        'green-dark': '#1E3A2A',
+                        'gold-accent': '#CBA15B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-neutral-bg">
+    <!-- Navigation -->
+    <nav class="bg-green-dark shadow-lg fixed w-full z-50" role="navigation" aria-label="Hoofdnavigatie">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="index.html" class="text-gold-accent logo-font text-2xl" aria-label="Brouwerij Rolduc - Naar homepagina">
+                        Brouwerij Rolduc
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8" role="menubar">
+                    <a href="index.html#brouwerij" class="text-white hover:text-gold-accent transition-colors">Brouwerij</a>
+                    <a href="index.html#distilleerderij" class="text-white hover:text-gold-accent transition-colors">Distilleerderij</a>
+                    <a href="index.html#proeflokaal" class="text-white hover:text-gold-accent transition-colors">Proeflokaal</a>
+                    <a href="index.html#winkel" class="text-white hover:text-gold-accent transition-colors">Winkel</a>
+                    <a href="index.html#horeca" class="text-white hover:text-gold-accent transition-colors">Horeca</a>
+                    <a href="webshop.html" class="text-gold-accent font-semibold">Webshop</a>
+                </div>
+                
+                <!-- Cart & CTA -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="relative">
+                        <button id="cart-btn" class="text-white hover:text-gold-accent transition-colors relative">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span id="cart-count" class="absolute -top-2 -right-2 bg-gold-accent text-green-dark text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold hidden">0</span>
+                        </button>
+                    </div>
+                    <a href="index.html#proeflokaal" class="bg-gold-accent text-green-dark px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors font-semibold">
+                        Reserveer Nu
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold-accent focus:outline-none focus:text-gold-accent" aria-label="Menu openen" aria-expanded="false">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-dark border-t border-green-main">
+            <div class="px-4 pt-2 pb-3 space-y-1">
+                <a href="index.html#brouwerij" class="block text-white hover:text-gold-accent py-2">Brouwerij</a>
+                <a href="index.html#distilleerderij" class="block text-white hover:text-gold-accent py-2">Distilleerderij</a>
+                <a href="index.html#proeflokaal" class="block text-white hover:text-gold-accent py-2">Proeflokaal</a>
+                <a href="index.html#winkel" class="block text-white hover:text-gold-accent py-2">Winkel</a>
+                <a href="index.html#horeca" class="block text-white hover:text-gold-accent py-2">Horeca</a>
+                <a href="webshop.html" class="block text-gold-accent font-semibold py-2">Webshop</a>
+                <button class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg mt-4">
+                    <i class="fas fa-shopping-cart mr-2"></i>
+                    Winkelwagen (<span id="mobile-cart-count">0</span>)
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-16 bg-gradient-to-r from-green-dark to-green-main">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 logo-font">
+                Webshop <span class="text-gold-accent">Brouwerij Rolduc</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
+                Bestel online ons volledige assortiment authentieke abdijbieren, likeuren en merchandise. 
+                Direct aan huis geleverd of afhalen in onze Abdijwinkel.
+            </p>
+            
+            <!-- Quick filters -->
+            <div class="flex flex-wrap justify-center gap-4 mt-8">
+                <button class="filter-btn active bg-gold-accent text-green-dark px-6 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors" data-filter="alle">
+                    Alle Producten
+                </button>
+                <button class="filter-btn bg-white bg-opacity-20 text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-30 transition-colors" data-filter="bieren">
+                    Bieren
+                </button>
+                <button class="filter-btn bg-white bg-opacity-20 text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-30 transition-colors" data-filter="likeuren">
+                    Likeuren
+                </button>
+                <button class="filter-btn bg-white bg-opacity-20 text-white px-6 py-2 rounded-lg font-semibold hover:bg-opacity-30 transition-colors" data-filter="merchandise">
+                    Merchandise
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <!-- Bieren Grid -->
+            <div id="bieren-section" class="product-category mb-16">
+                <h2 class="text-3xl font-bold text-green-dark mb-8 text-center">Onze Bieren</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    
+                    <!-- Kølsje Jong -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Kolsje-Jong-Fles.jpg" alt="Kølsje Jong" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Kølsje Jong</h3>
+                            <p class="text-sm text-gray-600 mb-2">Kölsch-stijl blond - 5,5% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Fris, doordrinkbaar</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Kølsje Jong","price":3.50,"image":"lossebieren/Kolsje-Jong-Fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Roda Bier -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Roda-Bier-FLes.jpg" alt="Roda Bier" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Roda Bier</h3>
+                            <p class="text-sm text-gray-600 mb-2">Blond - 7% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Stevig, krachtig, Limburgse roots</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Roda Bier","price":3.50,"image":"lossebieren/Roda-Bier-FLes.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Paters Broen -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Paters-Broen-fles.jpg" alt="Paters Broen" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Paters Broen</h3>
+                            <p class="text-sm text-gray-600 mb-2">Donker bier/Dubbel-stijl - 7% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Chocolade, stoofpottonen</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Paters Broen","price":3.50,"image":"lossebieren/Paters-Broen-fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Rolducer Zwaere -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Rolducer-Zweare-Fles.jpg" alt="Rolducer Zwaere" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Rolducer Zwaere</h3>
+                            <p class="text-sm text-gray-600 mb-2">Belgian Strong Dark Ale - 8,5% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Donker, met honing & gerookte gerst</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Rolducer Zwaere","price":3.50,"image":"lossebieren/Rolducer-Zweare-Fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kloester IPA -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Kloester-IPA-fles.jpg" alt="Kloester IPA" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Kloester IPA</h3>
+                            <p class="text-sm text-gray-600 mb-2">IPA - 6,5% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Citrus & fruitig, droge afdronk</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Kloester IPA","price":3.50,"image":"lossebieren/Kloester-IPA-fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duuvels Weizen -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Duuvels-Weizen-Fles.jpg" alt="Duuvels Weizen" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Duuvels Weizen</h3>
+                            <p class="text-sm text-gray-600 mb-2">Weizen/Hopfenweisse - 6% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Frisse tarwe, hoppig</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Duuvels Weizen","price":3.50,"image":"lossebieren/Duuvels-Weizen-Fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Zondig Genot -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="bieren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Zondig-genot-fles.jpg" alt="Zondig Genot" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Zondig Genot</h3>
+                            <p class="text-sm text-gray-600 mb-2">Belgian Strong Dark Ale - 8,5% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Infused met Calvados – "zondig genot"</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€3,50</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Zondig Genot","price":3.50,"image":"lossebieren/Zondig-genot-fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blonde Non Barrel Aged -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative" data-category="bieren">
+                        <div class="absolute top-2 right-2 z-10">
+                            <span class="limited-edition-badge bg-gold-accent text-green-dark text-xs font-bold px-2 py-1 rounded-full">Limited Edition</span>
+                        </div>
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="lossebieren/Blonde-Non-BA-Fles.jpg" alt="Blonde Non Barrel Aged" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Blonde Non Barrel Aged</h3>
+                            <p class="text-sm text-gray-600 mb-2">Barrel-Aged Belgian Strong Golden Ale - 8% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Gerijpt op Frans eiken cognac-vaten</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€4,25</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Blonde Non Barrel Aged","price":4.25,"image":"lossebieren/Blonde-Non-BA-Fles.jpg","category":"bieren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Likeuren Grid -->
+            <div id="likeuren-section" class="product-category mb-16">
+                <h2 class="text-3xl font-bold text-green-dark mb-8 text-center">Bokkenrijders Likeuren</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Duivelsrit -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="likeuren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="assets/Duivelsrit.jpg" alt="Duivelsrit Rumlikeur" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Duivelsrit</h3>
+                            <p class="text-sm text-gray-600 mb-2">Rumlikeur - 14,9% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Kruidige rum voor warmte tijdens nachtelijke ritten</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€16,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Duivelsrit","price":16.95,"image":"assets/Duivelsrit.jpg","category":"likeuren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hellevuur -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="likeuren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="assets/Hellevuur.jpg" alt="Hellevuur Kruidenlikeur" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Hellevuur</h3>
+                            <p class="text-sm text-gray-600 mb-2">Kruidenlikeur - 14,9% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Geneeskundige kruiden voor snel herstel</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€16,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Hellevuur","price":16.95,"image":"assets/Hellevuur.jpg","category":"likeuren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gulden Buit -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="likeuren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="assets/Gulden-Buit.jpg" alt="Gulden Buit Babbelaar Likeur" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Gulden Buit</h3>
+                            <p class="text-sm text-gray-600 mb-2">Babbelaar Likeur - 14,9% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Karamelsmaak die overwinning zoeter maakt</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€16,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Gulden Buit","price":16.95,"image":"assets/Gulden-Buit.jpg","category":"likeuren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schijproces -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="likeuren">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <img src="assets/Schijnproces.jpg" alt="Schijproces Koffielikeur" class="w-full h-full object-contain p-4">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Schijproces</h3>
+                            <p class="text-sm text-gray-600 mb-2">Koffielikeur - 14,9% ABV</p>
+                            <p class="text-xs text-gray-500 mb-3">Koffielikeur die zelfs onrecht dragelijk maakt</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€16,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Schijproces","price":16.95,"image":"assets/Schijnproces.jpg","category":"likeuren"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Merchandise Grid -->
+            <div id="merchandise-section" class="product-category">
+                <h2 class="text-3xl font-bold text-green-dark mb-8 text-center">Merchandise</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- T-Shirt -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <i class="fas fa-tshirt text-gold-accent text-6xl"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Brouwerij Rolduc T-Shirt</h3>
+                            <p class="text-sm text-gray-600 mb-2">100% Katoen - Diverse maten</p>
+                            <p class="text-xs text-gray-500 mb-3">Comfortabel T-shirt met brouwerijlogo</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€19,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Brouwerij Rolduc T-Shirt","price":19.95,"image":"","category":"merchandise"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bierglas Set -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <i class="fas fa-wine-glass text-gold-accent text-6xl"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Rolduc Bierglazen Set</h3>
+                            <p class="text-sm text-gray-600 mb-2">2 glazen - 33cl</p>
+                            <p class="text-xs text-gray-500 mb-3">Officiële bierglazen met logo</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€24,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Rolduc Bierglazen Set","price":24.95,"image":"","category":"merchandise"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cadeaupakket -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
+                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
+                            <i class="fas fa-gift text-gold-accent text-6xl"></i>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Rolduc Cadeaupakket</h3>
+                            <p class="text-sm text-gray-600 mb-2">4 bieren + glas + chocolade</p>
+                            <p class="text-xs text-gray-500 mb-3">Perfect cadeau voor bierliefhebbers</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€34,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Rolduc Cadeaupakket","price":34.95,"image":"","category":"merchandise"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="flex flex-col h-full">
+            <!-- Cart Header -->
+            <div class="bg-green-dark text-white p-4 flex justify-between items-center">
+                <h2 class="text-xl font-bold">Winkelwagen</h2>
+                <button id="close-cart" class="text-white hover:text-gold-accent">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Cart Items -->
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4">
+                <div id="empty-cart" class="text-center py-8 text-gray-500">
+                    <i class="fas fa-shopping-cart text-4xl mb-4"></i>
+                    <p>Je winkelwagen is leeg</p>
+                </div>
+            </div>
+            
+            <!-- Cart Footer -->
+            <div class="border-t p-4 bg-gray-50">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-bold">Totaal:</span>
+                    <span id="cart-total" class="text-xl font-bold text-gold-accent">€0,00</span>
+                </div>
+                <button id="checkout-btn" class="w-full bg-green-main text-white py-3 rounded-lg hover:bg-green-dark transition-colors font-semibold disabled:opacity-50" disabled>
+                    Bestellen
+                </button>
+                <p class="text-xs text-gray-500 mt-2 text-center">
+                    Levering binnen 3-5 werkdagen
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"></div>
+
+    <!-- Footer -->
+    <footer class="bg-green-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <h3 class="text-gold-accent logo-font text-xl mb-4">Brouwerij Rolduc</h3>
+                    <p class="text-gray-300 mb-4">
+                        Ambachtelijk bier en authentieke likeuren sinds 1999. 
+                        Gelegen in het prachtige Kerkrade, Limburg.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-gold-accent transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold-accent transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold-accent transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-gold-accent transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-gold-accent font-bold mb-4">Snelle Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#brouwerij" class="text-gray-300 hover:text-gold-accent transition-colors">Brouwerij</a></li>
+                        <li><a href="index.html#distilleerderij" class="text-gray-300 hover:text-gold-accent transition-colors">Distilleerderij</a></li>
+                        <li><a href="index.html#proeflokaal" class="text-gray-300 hover:text-gold-accent transition-colors">Proeflokaal</a></li>
+                        <li><a href="index.html#winkel" class="text-gray-300 hover:text-gold-accent transition-colors">Abdijwinkel</a></li>
+                        <li><a href="index.html#horeca" class="text-gray-300 hover:text-gold-accent transition-colors">Horeca</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Webshop Info -->
+                <div>
+                    <h4 class="text-gold-accent font-bold mb-4">Webshop Info</h4>
+                    <div class="space-y-2 text-gray-300 text-sm">
+                        <div class="flex items-center">
+                            <i class="fas fa-truck mr-2 text-gold-accent"></i>
+                            <span>Gratis verzending vanaf €50</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-gold-accent"></i>
+                            <span>Levering binnen 3-5 werkdagen</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt mr-2 text-gold-accent"></i>
+                            <span>Veilig betalen</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-store mr-2 text-gold-accent"></i>
+                            <span>Ook afhalen mogelijk</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-gold-accent font-bold mb-4">Contact</h4>
+                    <div class="space-y-2 text-gray-300">
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-gold-accent"></i>
+                            <span>Abdij Rolduc 16, 6464 EP Kerkrade</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gold-accent"></i>
+                            <a href="tel:+31622263271" class="hover:text-gold-accent transition-colors">06-2226 3271</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gold-accent"></i>
+                            <a href="mailto:info@brouwerij-rolduc.nl" class="hover:text-gold-accent transition-colors">info@brouwerij-rolduc.nl</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Bar -->
+            <div class="border-t border-green-main mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-300 text-sm">
+                    © 2025 Brouwerij Rolduc. Alle rechten voorbehouden.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-300 hover:text-gold-accent text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-300 hover:text-gold-accent text-sm transition-colors">Algemene Voorwaarden</a>
+                    <a href="#" class="text-gray-300 hover:text-gold-accent text-sm transition-colors">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Webshop specific JavaScript
+        let cart = [];
+
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            const productSections = document.querySelectorAll('.product-category');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active', 'bg-gold-accent', 'text-green-dark'));
+                    filterBtns.forEach(b => b.classList.add('bg-white', 'bg-opacity-20', 'text-white'));
+                    this.classList.remove('bg-white', 'bg-opacity-20', 'text-white');
+                    this.classList.add('active', 'bg-gold-accent', 'text-green-dark');
+
+                    // Filter products
+                    if (filter === 'alle') {
+                        productSections.forEach(section => section.style.display = 'block');
+                    } else {
+                        productSections.forEach(section => {
+                            const sectionId = section.getAttribute('id');
+                            if (sectionId.includes(filter)) {
+                                section.style.display = 'block';
+                            } else {
+                                section.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+
+            // Cart functionality
+            const cartBtn = document.getElementById('cart-btn');
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartOverlay = document.getElementById('cart-overlay');
+            const closeCartBtn = document.getElementById('close-cart');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const mobileCartCount = document.getElementById('mobile-cart-count');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            // Open cart
+            cartBtn.addEventListener('click', openCart);
+            
+            // Close cart
+            closeCartBtn.addEventListener('click', closeCart);
+            cartOverlay.addEventListener('click', closeCart);
+
+            function openCart() {
+                cartSidebar.classList.remove('translate-x-full');
+                cartOverlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeCart() {
+                cartSidebar.classList.add('translate-x-full');
+                cartOverlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Add to cart
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productData = JSON.parse(this.getAttribute('data-product'));
+                    addToCart(productData);
+                });
+            });
+
+            function addToCart(product) {
+                const existingItem = cart.find(item => item.name === product.name);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({...product, quantity: 1});
+                }
+                
+                updateCartDisplay();
+                
+                // Visual feedback
+                const btn = event.target.closest('.add-to-cart');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i>Toegevoegd';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }, 1000);
+            }
+
+            function removeFromCart(productName) {
+                cart = cart.filter(item => item.name !== productName);
+                updateCartDisplay();
+            }
+
+            function updateQuantity(productName, newQuantity) {
+                const item = cart.find(item => item.name === productName);
+                if (item) {
+                    if (newQuantity <= 0) {
+                        removeFromCart(productName);
+                    } else {
+                        item.quantity = newQuantity;
+                        updateCartDisplay();
+                    }
+                }
+            }
+
+            function updateCartDisplay() {
+                const emptyCart = document.getElementById('empty-cart');
+                
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><i class="fas fa-shopping-cart text-4xl mb-4"></i><p>Je winkelwagen is leeg</p></div>';
+                    cartCount.classList.add('hidden');
+                    mobileCartCount.textContent = '0';
+                    cartTotal.textContent = '€0,00';
+                    checkoutBtn.disabled = true;
+                    return;
+                }
+
+                // Update cart count
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+                mobileCartCount.textContent = totalItems;
+
+                // Update cart items
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="border-b pb-4 mb-4">
+                        <div class="flex items-center space-x-3">
+                            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain">` : '<div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center"><i class="fas fa-image text-gray-400"></i></div>'}
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-green-dark">${item.name}</h4>
+                                <p class="text-sm text-gray-600">€${item.price.toFixed(2)}</p>
+                                <div class="flex items-center space-x-2 mt-2">
+                                    <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">-</button>
+                                    <span class="font-semibold">${item.quantity}</span>
+                                    <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">+</button>
+                                    <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 ml-4"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Update total
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                cartTotal.textContent = `€${total.toFixed(2)}`;
+                checkoutBtn.disabled = false;
+            }
+
+            // Make functions global
+            window.updateQuantity = updateQuantity;
+            window.removeFromCart = removeFromCart;
+
+            // Checkout
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length === 0) return;
+                
+                const orderDetails = cart.map(item => `${item.quantity}x ${item.name} - €${(item.price * item.quantity).toFixed(2)}`).join('%0D%0A');
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                
+                const emailBody = `Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag de volgende bestelling plaatsen:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotaal: €${total.toFixed(2)}%0D%0A%0D%0AContactgegevens:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Adres: %0D%0A- Gewenste leverdatum: %0D%0A- Opmerkingen: %0D%0A%0D%0AMet vriendelijke groet,`;
+                
+                window.location.href = `mailto:info@brouwerij-rolduc.nl?subject=Online Bestelling - €${total.toFixed(2)}&body=${emailBody}`;
+            });
+        });
+    </script>
+</body>
+</html>

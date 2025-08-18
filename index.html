@@ -79,12 +79,14 @@
                 
                 <!-- Cart & CTA -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <button class="relative text-white hover:text-gold-accent" aria-label="Winkelwagen bekijken">
+                    <a href="webshop.html" class="relative text-white hover:text-gold-accent" aria-label="Winkelwagen bekijken">
                         <i class="fas fa-shopping-cart text-xl" aria-hidden="true"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-gold-accent text-green-dark rounded-full w-5 h-5 flex items-center justify-center text-xs" aria-label="0 items in winkelwagen">0</span>
-                    </button>
+                    </a>
                     <button class="bg-gold-accent text-green-dark px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors" aria-label="Direct bestellen">
-                        Bestellen
+                        <a href="webshop.html" class="text-green-dark no-underline">
+                            Bestellen
+                        </a>
                     </button>
                 </div>
                 
@@ -107,7 +109,9 @@
                 <a href="#winkel" class="block text-white hover:text-gold-accent py-2">Winkel</a>
                 <a href="#horeca" class="block text-white hover:text-gold-accent py-2">Horeca</a>
                 <button class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg mt-4">
-                    Bestellen
+                    <a href="webshop.html" class="text-green-dark no-underline">
+                        Bestellen
+                    </a>
                 </button>
             </div>
         </div>
@@ -125,12 +129,16 @@
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button id="hero-reserve-btn" class="bg-gold-accent text-green-dark px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 transition-colors">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    Reserveer Proeverij
+                    <a href="mailto:info@brouwerij-rolduc.nl?subject=Reservering Proeverij&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag een proeverij reserveren.%0D%0A%0D%0ADetails:%0D%0A- Aantal personen: %0D%0A- Gewenste datum: %0D%0A- Gewenste tijd: %0D%0A- Type proeverij (regulier/beer-flight/rondleiding): %0D%0A- Contactpersoon: %0D%0A- Telefoonnummer: %0D%0A- Eventuele opmerkingen: %0D%0A%0D%0AMet vriendelijke groet," class="text-green-dark no-underline flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Reserveer Proeverij
+                    </a>
                 </button>
                 <button id="hero-shop-btn" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-green-dark transition-colors">
-                    <i class="fas fa-shopping-bag mr-2"></i>
-                    Shop Online
+                    <a href="webshop.html" class="text-white no-underline flex items-center hover:text-green-dark">
+                        <i class="fas fa-shopping-bag mr-2"></i>
+                        Shop Online
+                    </a>
                 </button>
             </div>
         </div>
@@ -510,8 +518,8 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <div class="beer-price">€3.75</div>
-                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors add-to-cart w-full" data-name="Blonde Non Barrel Aged" data-price="3.75">
+                                    <div class="beer-price">€4.25</div>
+                                    <button class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors add-to-cart w-full" data-name="Blonde Non Barrel Aged" data-price="4.25">
                                         Bestellen
                                     </button>
                                 </div>
@@ -676,8 +684,10 @@
                     </div>
                     
                     <button class="bg-green-main text-white px-8 py-4 rounded-lg hover:bg-green-dark transition-colors">
-                        <i class="fas fa-info-circle mr-2"></i>
-                        Meer over ons brouwproces
+                        <a href="mailto:info@brouwerij-rolduc.nl?subject=Informatie Brouwproces&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk ben geïnteresseerd in meer informatie over jullie brouwproces.%0D%0A%0D%0ADetails:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Specifieke interesse: %0D%0A- Eventuele vragen: %0D%0A%0D%0AMet vriendelijke groet," class="text-white no-underline flex items-center">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            Meer over ons brouwproces
+                        </a>
                     </button>
                 </div>
                 <div>
@@ -768,8 +778,10 @@
                     </div>
                     
                     <button id="likeuren-modal-btn" class="bg-green-main text-white px-8 py-4 rounded-lg hover:bg-green-dark transition-colors">
-                        <i class="fas fa-bottle-droplet mr-2"></i>
-                        Ontdek onze Bokkenrijders Likeuren
+                        <a href="mailto:info@brouwerij-rolduc.nl?subject=Informatie Bokkenrijders Likeuren&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk ben geïnteresseerd in jullie Bokkenrijders likeuren en zou graag meer informatie willen ontvangen.%0D%0A%0D%0ADetails:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Interesse in specifieke likeuren: %0D%0A- Aankoop voor (particulier/horeca): %0D%0A- Eventuele vragen: %0D%0A%0D%0AMet vriendelijke groet," class="text-white no-underline flex items-center">
+                            <i class="fas fa-bottle-droplet mr-2"></i>
+                            Ontdek onze Bokkenrijders Likeuren
+                        </a>
                     </button>
                 </div>
             </div>
@@ -859,8 +871,10 @@
                     </div>
                     
                     <button id="reserve-btn" class="w-full bg-green-main text-white py-3 rounded-lg hover:bg-green-dark transition-colors mb-3">
-                        <i class="fas fa-calendar-check mr-2"></i>
-                        Reserveer Nu
+                        <a href="mailto:info@brouwerij-rolduc.nl?subject=Reservering Proeflokaal&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag een reservering maken voor het proeflokaal.%0D%0A%0D%0ADetails:%0D%0A- Aantal personen: %0D%0A- Gewenste datum: %0D%0A- Gewenste tijd: %0D%0A- Type bezoek (regulier/beer-flight): %0D%0A- Contactpersoon: %0D%0A- Telefoonnummer: %0D%0A- Eventuele opmerkingen: %0D%0A%0D%0AMet vriendelijke groet," class="text-white no-underline flex items-center justify-center">
+                            <i class="fas fa-calendar-check mr-2"></i>
+                            Reserveer Nu
+                        </a>
                     </button>
                     
                     <a href="tel:+31622263271" class="w-full border border-green-main text-green-main py-3 rounded-lg hover:bg-green-main hover:text-white transition-colors text-center inline-block">
@@ -1000,8 +1014,10 @@
                     <div class="mt-6 bg-green-dark p-4 rounded-lg text-center">
                         <p class="text-white mb-2">Kan je niet langskomen?</p>
                         <button class="bg-gold-accent text-green-dark px-6 py-2 rounded hover:bg-yellow-400 transition-colors">
-                            <i class="fas fa-shopping-cart mr-2"></i>
-                            Bestel Online
+                            <a href="webshop.html" class="text-green-dark no-underline flex items-center">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                Bestel Online
+                            </a>
                         </button>
                     </div>
                 </div>
@@ -1054,68 +1070,96 @@
                         </div>
                     </div>
                     
-                    <!-- Campaign Banner -->
+                    <!-- Custom Beer Brewing Section -->
                     <div class="bg-gold-accent p-6 rounded-lg mt-8">
                         <h4 class="text-green-dark font-bold text-lg mb-2">
-                            <i class="fas fa-gift mr-2"></i>
-                            Nieuwe Horeca Partner Voordeel
+                            <i class="fas fa-flask mr-2"></i>
+                            Eigen Huisbier Laten Brouwen
                         </h4>
-                        <p class="text-green-dark mb-3">
-                            Word nieuwe partner en ontvang gratis tapapparatuur ter waarde van €500!
+                        <p class="text-green-dark mb-4">
+                            Wij brouwen graag een uniek huisbier speciaal voor uw zaak. Van concept tot tap - 
+                            een exclusief bier dat perfect bij uw establishment past.
                         </p>
+                        
+                        <!-- Success Story -->
+                        <div class="bg-green-dark bg-opacity-20 p-4 rounded mb-4">
+                            <h5 class="text-green-dark font-bold mb-2">
+                                <i class="fas fa-star mr-2"></i>
+                                Succesverhaal: Sanctus Fusion
+                            </h5>
+                            <p class="text-green-dark text-sm mb-2">
+                                Voor café Dé Wieëtsjaf in Kerkrade hebben wij <strong>Sanctus Fusion</strong> gebrouwen - 
+                                een karaktervolle IPA (7,4% ABV, 48 IBU) ter ere van "17 jaar lief en leed in de Wieëtsjaf".
+                            </p>
+                            <p class="text-green-dark text-xs">
+                                "Een IPA waarin traditie, vakmanschap en vriendschap samensmelten" - 
+                                gebrouwen met drie hopsoorten en twee mouten voor perfecte balans.
+                            </p>
+                        </div>
+                        
                         <button class="bg-green-dark text-white px-6 py-2 rounded hover:bg-green-main transition-colors">
-                            Claim Nu
+                            <a href="mailto:info@brouwerij-rolduc.nl?subject=Informatie Eigen Huisbier Brouwen&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk ben geïnteresseerd in de mogelijkheid om een eigen huisbier te laten brouwen voor mijn horeca establishment.%0D%0A%0D%0ADetails:%0D%0A- Bedrijfsnaam: %0D%0A- Type zaak: %0D%0A- Locatie: %0D%0A- Contactpersoon: %0D%0A- Telefoonnummer: %0D%0A- Gewenste bierstijl (indien bekend): %0D%0A- Gewenste productie volume: %0D%0A- Eventuele opmerkingen: %0D%0A%0D%0AMet vriendelijke groet," class="text-white no-underline">
+                                <i class="fas fa-beer mr-2"></i>
+                                Vraag Info Aan
+                            </a>
                         </button>
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
+                <!-- Contact Info Card -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-bold text-green-dark mb-6">Horeca aanvraag</h3>
+                    <h3 class="text-xl font-bold text-green-dark mb-6">Direct Contact</h3>
                     
-                    <form id="horeca-form" class="space-y-4">
-                        <div>
-                            <label class="block text-green-dark font-medium mb-2">Bedrijfsnaam</label>
-                            <input type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none">
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-green-dark font-medium mb-2">Voornaam</label>
-                                <input type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none">
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-gold-accent p-2 rounded-lg">
+                                <i class="fas fa-phone text-green-dark"></i>
                             </div>
                             <div>
-                                <label class="block text-green-dark font-medium mb-2">Achternaam</label>
-                                <input type="text" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none">
+                                <p class="font-medium text-green-dark">Telefoon</p>
+                                <a href="tel:+31622263271" class="text-gray-600 hover:text-gold-accent">06-2226 3271</a>
                             </div>
                         </div>
                         
-                        <div>
-                            <label class="block text-green-dark font-medium mb-2">E-mail</label>
-                            <input type="email" required class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-gold-accent p-2 rounded-lg">
+                                <i class="fas fa-envelope text-green-dark"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-green-dark">E-mail</p>
+                                <a href="mailto:info@brouwerij-rolduc.nl" class="text-gray-600 hover:text-gold-accent">info@brouwerij-rolduc.nl</a>
+                            </div>
                         </div>
                         
-                        <div>
-                            <label class="block text-green-dark font-medium mb-2">Type zaak</label>
-                            <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none">
-                                <option>Restaurant</option>
-                                <option>Café</option>
-                                <option>Hotel</option>
-                                <option>Catering</option>
-                                <option>Anders</option>
-                            </select>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-gold-accent p-2 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-green-dark"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-green-dark">Locatie</p>
+                                <p class="text-gray-600">Abdijcomplex Rolduc<br>6464 EP Kerkrade</p>
+                            </div>
                         </div>
-                        
-                        <div>
-                            <label class="block text-green-dark font-medium mb-2">Bericht</label>
-                            <textarea rows="4" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-gold-accent focus:outline-none"></textarea>
-                        </div>
-                        
-                        <button type="submit" class="w-full bg-green-main text-white py-3 rounded-lg hover:bg-green-dark transition-colors">
-                            <i class="fas fa-paper-plane mr-2"></i>
-                            Verstuur Aanvraag
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <button class="w-full bg-green-main text-white py-3 rounded-lg hover:bg-green-dark transition-colors">
+                            <a href="mailto:info@brouwerij-rolduc.nl?subject=Horeca Partnership Aanvraag&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk ben geïnteresseerd in een horeca partnership.%0D%0A%0D%0ADetails:%0D%0A- Bedrijfsnaam: %0D%0A- Type zaak: %0D%0A- Locatie: %0D%0A- Contactpersoon: %0D%0A- Telefoonnummer: %0D%0A- Specifieke interesse: %0D%0A- Eventuele vragen: %0D%0A%0D%0AMet vriendelijke groet," class="text-white no-underline flex items-center justify-center">
+                                <i class="fas fa-handshake mr-2"></i>
+                                Neem Contact Op
+                            </a>
                         </button>
-                    </form>
+                        
+                        <!-- Sanctus Fusion Photo -->
+                        <div class="mt-6">
+                            <img src="assets/Sanctus-Fusion.jpg" 
+                                 alt="Sanctus Fusion - Eigen huisbier gebrouwen voor café Dé Wieëtsjaf in Kerkrade" 
+                                 class="w-full rounded-lg shadow-lg">
+                            <p class="text-center text-sm text-gray-600 mt-2">
+                                Sanctus Fusion - Exclusieve IPA gebrouwen voor café Dé Wieëtsjaf
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             
@@ -1125,15 +1169,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <!-- Video 1 -->
                     <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                        <div class="aspect-video bg-gray-200 flex items-center justify-center">
-                            <button class="bg-gold-accent text-green-dark px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors video-btn">
-                                <i class="fas fa-play mr-2"></i>
-                                Tapservice
-                            </button>
+                        <div class="aspect-video relative overflow-hidden cursor-pointer group">
+                            <img src="assets/Sanctus-Fusion-Thumbnail.jpeg" 
+                                 alt="Sanctus Fusion video thumbnail" 
+                                 class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group-hover:bg-opacity-30 transition-all duration-300">
+                                <button class="bg-gold-accent text-green-dark px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors video-btn" 
+                                        data-video-url="https://www.youtube.com/embed/HjWqJNvIk7A" 
+                                        data-video-title="Sanctus Fusion - Exclusieve IPA voor café Dé Wieëtsjaf">
+                                    <i class="fas fa-play mr-2"></i>
+                                    Sanctus Fusion
+                                </button>
+                            </div>
                         </div>
                         <div class="p-4">
-                            <h4 class="font-bold text-green-dark">Professionele Tapservice</h4>
-                            <p class="text-gray-600 text-sm">Hoe wij uw tapinstallatie onderhouden</p>
+                            <h4 class="font-bold text-green-dark">Sanctus Fusion IPA</h4>
+                            <p class="text-gray-600 text-sm">Exclusieve IPA gebrouwen voor café Dé Wieëtsjaf</p>
                         </div>
                     </div>
                     
@@ -1209,8 +1260,10 @@
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
                 <button class="bg-gold-accent text-green-dark px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-400 transition-colors">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    Boek Rondleiding
+                    <a href="mailto:info@brouwerij-rolduc.nl?subject=Reservering Rondleiding en Bierproeverij&body=Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag een rondleiding en bierproeverij boeken.%0D%0A%0D%0ADetails:%0D%0A- Aantal personen: %0D%0A- Gewenste datum: %0D%0A- Gewenste tijd: %0D%0A- Contactpersoon: %0D%0A- Telefoonnummer: %0D%0A- Eventuele opmerkingen: %0D%0A%0D%0AMet vriendelijke groet," class="text-green-dark no-underline flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Boek Rondleiding
+                    </a>
                 </button>
                 <button id="experience-video-btn" class="border-2 border-gold-accent text-gold-accent px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gold-accent hover:text-green-dark transition-colors">
                     <i class="fas fa-play mr-2"></i>

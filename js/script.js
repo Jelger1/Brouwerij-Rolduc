@@ -276,8 +276,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const videoButtons = document.querySelectorAll('.video-btn');
     videoButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const title = this.textContent.trim();
-            playDemoVideo(title);
+            const videoUrl = this.getAttribute('data-video-url');
+            const videoTitle = this.getAttribute('data-video-title') || this.textContent.trim();
+            
+            if (videoUrl) {
+                // Use real video modal for YouTube links
+                showVideoModal(videoUrl, videoTitle);
+            } else {
+                // Fallback to demo for buttons without URL
+                const title = this.textContent.trim();
+                playDemoVideo(title);
+            }
         });
     });
 
@@ -466,6 +475,24 @@ document.addEventListener('DOMContentLoaded', function() {
     // YouTube video URLs
     const experienceVideoUrl = 'https://www.youtube.com/embed/uF84oyxJ-Hc?autoplay=1&rel=0&modestbranding=1';
     const breweryProcessVideoUrl = 'https://www.youtube.com/embed/HjWqJNvIk7A?autoplay=1&rel=0&modestbranding=1';
+    
+    // Function to show video modal with custom URL and title
+    function showVideoModal(videoUrl, title) {
+        if (videoIframe && videoModal) {
+            // Add autoplay and other parameters if not already present
+            const enhancedUrl = videoUrl.includes('?') 
+                ? `${videoUrl}&autoplay=1&rel=0&modestbranding=1`
+                : `${videoUrl}?autoplay=1&rel=0&modestbranding=1`;
+            
+            videoIframe.src = enhancedUrl;
+            if (videoModalTitle) {
+                videoModalTitle.textContent = title || 'Brouwerij Rolduc Video';
+            }
+            videoModal.style.display = 'flex';
+            videoModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
     
     // Function to open brewery video
     function openBreweryVideo() {
