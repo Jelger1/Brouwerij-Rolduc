@@ -694,7 +694,7 @@ function showReservationModal() {
                             <p class="text-sm text-green-dark">
                                 <i class="fas fa-info-circle mr-2"></i>
                                 Reserveringen zijn mogelijk van vrijdag t/m zondag. 
-                                Bij 4+ personen krijgt u 20% korting op borrelpakketten!
+                                Reserveer om 13:00u op zaterdag met 4+ personen en krijg 20% korting op kaas-worstplankjes!
                             </p>
                         </div>
                         
@@ -788,13 +788,13 @@ Met vriendelijke groet,
 Brouwerij Rolduc Website
     `;
     
-    console.log('Email zou worden verstuurd naar info@brouwerijeolduc.nl:', emailContent);
+    console.log('Email zou worden verstuurd naar info@brouwerij-rolduc.nl:', emailContent);
     
     // In een echte implementatie zou hier een API call komen naar de backend:
     // fetch('/api/send-reservation-email', {
     //     method: 'POST',
     //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify({ to: 'info@brouwerijerolduc.nl', content: emailContent, reservationData: data })
+    //     body: JSON.stringify({ to: 'info@brouwerij-rolduc.nl', content: emailContent, reservationData: data })
     // });
 }
 
@@ -951,3 +951,90 @@ function checkAgeVerification() {
 
 // Initialize age verification check
 checkAgeVerification();
+
+// Bokkenrijders Likeuren Modal
+function initializeLikeurenModal() {
+    const likeurenModalBtn = document.getElementById('likeuren-modal-btn');
+    const likeurenModalBtn2 = document.getElementById('likeuren-modal-btn-2'); // New button
+    const likeurenModal = document.getElementById('likeuren-modal');
+    const closeLikeurenModal = document.getElementById('close-likeuren-modal');
+    const modalToProeflokaal = document.getElementById('modal-to-proeflokaal');
+    const modalToWinkel = document.getElementById('modal-to-winkel');
+    
+    function openModal() {
+        likeurenModal.style.display = 'flex';
+        likeurenModal.classList.remove('closing');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+    
+    if (likeurenModalBtn && likeurenModal && closeLikeurenModal) {
+        // Open modal with animation - first button
+        likeurenModalBtn.addEventListener('click', openModal);
+        
+        // Open modal with animation - second button (from collection section)
+        if (likeurenModalBtn2) {
+            likeurenModalBtn2.addEventListener('click', openModal);
+        }
+        
+        // Close modal with animation
+        function closeModal() {
+            likeurenModal.classList.add('closing');
+            setTimeout(() => {
+                likeurenModal.style.display = 'none';
+                likeurenModal.classList.remove('closing');
+                document.body.style.overflow = 'auto'; // Restore scrolling
+            }, 300); // Match CSS animation duration
+        }
+        
+        // Close modal and navigate to section
+        function closeModalAndNavigate(targetId) {
+            closeModal();
+            // Wait for modal to close before scrolling
+            setTimeout(() => {
+                const target = document.getElementById(targetId);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80; // Account for fixed header
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 350); // Slightly longer than modal close animation
+        }
+        
+        // Close modal when clicking X button
+        closeLikeurenModal.addEventListener('click', closeModal);
+        
+        // Modal navigation buttons
+        if (modalToProeflokaal) {
+            modalToProeflokaal.addEventListener('click', function() {
+                closeModalAndNavigate('proeflokaal');
+            });
+        }
+        
+        if (modalToWinkel) {
+            modalToWinkel.addEventListener('click', function() {
+                closeModalAndNavigate('winkel');
+            });
+        }
+        
+        // Close modal when clicking outside
+        likeurenModal.addEventListener('click', function(e) {
+            if (e.target === likeurenModal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && likeurenModal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+    }
+}
+
+// Initialize likeuren modal when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initializeLikeurenModal();
+});

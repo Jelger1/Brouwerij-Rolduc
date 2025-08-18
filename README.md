@@ -98,7 +98,7 @@ Een volledig functionele, moderne website voor Brouwerij Rolduc gebouwd met HTML
 
 ### Werkelijke Contactgegevens
 - **Adres**: Abdij Rolduc 16, 6464 EP Kerkrade
-- **Telefoon**: 045-533 5500 (clickable)
+- **Telefoon**: 06-2226 3271 (clickable)
 - **Email**: info@brouwerij-rolduc.nl (clickable)
 - **Sales**: sales@rolduc.com
 
