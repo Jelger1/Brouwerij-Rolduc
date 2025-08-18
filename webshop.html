@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webshop - Brouwerij Rolduc | Bestel Online</title>
-    <meta name="description" content="Bestel online bij Brouwerij Rolduc - authentieke abdijbieren, likeuren en merchandise direct aan huis geleverd.">
+    <meta name="description" content="Bestel online bij Brouwerij Rolduc - authentieke abdijbieren, likeuren en merchandise af te halen in onze Abdijwinkel.">
     
     <!-- Favicon Settings -->
     <link rel="icon" type="image/svg+xml" href="assets/Brouwerij-Rolduc.svg">
@@ -113,7 +113,7 @@
             </h1>
             <p class="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
                 Bestel online ons volledige assortiment authentieke abdijbieren, likeuren en merchandise. 
-                Direct aan huis geleverd of afhalen in onze Abdijwinkel.
+                Af te halen in onze Abdijwinkel op het historische Abdijcomplex Rolduc.
             </p>
             
             <!-- Quick filters -->
@@ -475,10 +475,10 @@
                     <span id="cart-total" class="text-xl font-bold text-gold-accent">€0,00</span>
                 </div>
                 <button id="checkout-btn" class="w-full bg-green-main text-white py-3 rounded-lg hover:bg-green-dark transition-colors font-semibold disabled:opacity-50" disabled>
-                    Bestellen
+                    Bestellen voor Afhalen
                 </button>
                 <p class="text-xs text-gray-500 mt-2 text-center">
-                    Levering binnen 3-5 werkdagen
+                    Afhalen in onze Abdijwinkel
                 </p>
             </div>
         </div>
@@ -531,20 +531,20 @@
                     <h4 class="text-gold-accent font-bold mb-4">Webshop Info</h4>
                     <div class="space-y-2 text-gray-300 text-sm">
                         <div class="flex items-center">
-                            <i class="fas fa-truck mr-2 text-gold-accent"></i>
-                            <span>Gratis verzending vanaf €50</span>
+                            <i class="fas fa-store mr-2 text-gold-accent"></i>
+                            <span>Afhalen in onze Abdijwinkel</span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-clock mr-2 text-gold-accent"></i>
-                            <span>Levering binnen 3-5 werkdagen</span>
+                            <span>Openingstijden winkel: vr 15-17, za 13-17, zo 10-14</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-shield-alt mr-2 text-gold-accent"></i>
-                            <span>Veilig betalen</span>
+                            <i class="fas fa-envelope mr-2 text-gold-accent"></i>
+                            <span>Bestelling via e-mail</span>
                         </div>
                         <div class="flex items-center">
-                            <i class="fas fa-store mr-2 text-gold-accent"></i>
-                            <span>Ook afhalen mogelijk</span>
+                            <i class="fas fa-map-marker-alt mr-2 text-gold-accent"></i>
+                            <span>Abdijcomplex Rolduc, Kerkrade</span>
                         </div>
                     </div>
                 </div>
@@ -763,9 +763,9 @@
                 const orderDetails = cart.map(item => `${item.quantity}x ${item.name} - €${(item.price * item.quantity).toFixed(2)}`).join('%0D%0A');
                 const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 
-                const emailBody = `Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag de volgende bestelling plaatsen:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotaal: €${total.toFixed(2)}%0D%0A%0D%0AContactgegevens:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Adres: %0D%0A- Gewenste leverdatum: %0D%0A- Opmerkingen: %0D%0A%0D%0AMet vriendelijke groet,`;
+                const emailBody = `Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag de volgende bestelling plaatsen voor afhalen in de Abdijwinkel:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotaal: €${total.toFixed(2)}%0D%0A%0D%0AContactgegevens:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Gewenste ophaaldatum: %0D%0A- Gewenste ophaaltijd: %0D%0A- Opmerkingen: %0D%0A%0D%0AMet vriendelijke groet,`;
                 
-                window.location.href = `mailto:info@brouwerij-rolduc.nl?subject=Online Bestelling - €${total.toFixed(2)}&body=${emailBody}`;
+                window.location.href = `mailto:info@brouwerij-rolduc.nl?subject=Webshop Bestelling voor Afhalen - €${total.toFixed(2)}&body=${emailBody}`;
             });
         });
     </script>
