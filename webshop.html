@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webshop - Brouwerij Rolduc | Bestel Online</title>
-    <meta name="description" content="Bestel online bij Brouwerij Rolduc - authentieke abdijbieren, likeuren en merchandise af te halen in onze Abdijwinkel.">
+    <title>Webshop - Brouwerij Rolduc | Bestel Voor Afhalen</title>
+    <meta name="description" content="Bestel vooraf bij Brouwerij Rolduc - authentieke abdijbieren, likeuren en merchandise af te halen in onze Abdijwinkel.">
     
     <!-- Favicon Settings -->
     <link rel="icon" type="image/svg+xml" href="assets/Brouwerij-Rolduc.svg">
@@ -88,18 +88,45 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-green-dark border-t border-green-main">
-            <div class="px-4 pt-2 pb-3 space-y-1">
+        <div id="mobile-menu" class="hidden md:hidden bg-green-dark border-t border-green-main z-50">
+            <div class="px-4 pt-2 pb-3 space-y-1">>
                 <a href="index.html#brouwerij" class="block text-white hover:text-gold-accent py-2">Brouwerij</a>
                 <a href="index.html#distilleerderij" class="block text-white hover:text-gold-accent py-2">Distilleerderij</a>
                 <a href="index.html#proeflokaal" class="block text-white hover:text-gold-accent py-2">Proeflokaal</a>
                 <a href="index.html#winkel" class="block text-white hover:text-gold-accent py-2">Winkel</a>
                 <a href="index.html#horeca" class="block text-white hover:text-gold-accent py-2">Horeca</a>
                 <a href="webshop.html" class="block text-gold-accent font-semibold py-2">Webshop</a>
-                <button class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg mt-4">
-                    <i class="fas fa-shopping-cart mr-2"></i>
-                    Winkelwagen (<span id="mobile-cart-count">0</span>)
-                </button>
+                
+                <!-- Mobile Cart Section -->
+                <div class="border-t border-green-main pt-4 mt-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h3 class="text-white font-semibold flex items-center">
+                            <i class="fas fa-shopping-cart mr-2"></i>
+                            Winkelwagen (<span id="mobile-cart-count">0</span>)
+                        </h3>
+                        <button id="mobile-cart-btn" class="text-gold-accent hover:text-yellow-400">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Mobile Cart Items -->
+                    <div id="mobile-cart-items" class="space-y-2 mb-3 max-h-40 overflow-y-auto">
+                        <div id="mobile-empty-cart" class="text-gray-300 text-sm text-center py-2">
+                            Geen items in winkelwagen
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Cart Total & Checkout -->
+                    <div id="mobile-cart-footer" class="hidden">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-white font-semibold">Totaal:</span>
+                            <span id="mobile-cart-total" class="text-gold-accent font-bold">€0,00</span>
+                        </div>
+                        <button id="mobile-checkout-btn" class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors disabled:opacity-50" disabled>
+                            Bestellen voor Afhalen
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -112,7 +139,7 @@
                 Webshop <span class="text-gold-accent">Brouwerij Rolduc</span>
             </h1>
             <p class="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto">
-                Bestel online ons volledige assortiment authentieke abdijbieren, likeuren en merchandise. 
+                Bestel vooraf ons volledige assortiment authentieke abdijbieren, likeuren en merchandise. 
                 Af te halen in onze Abdijwinkel op het historische Abdijcomplex Rolduc.
             </p>
             
@@ -450,7 +477,7 @@
     </section>
 
     <!-- Shopping Cart Sidebar -->
-    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+    <div id="cart-sidebar" class="fixed right-0 top-0 h-full w-full sm:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
         <div class="flex flex-col h-full">
             <!-- Cart Header -->
             <div class="bg-green-dark text-white p-4 flex justify-between items-center">
@@ -583,21 +610,54 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
     <script>
         // Webshop specific JavaScript
         let cart = [];
+        let mobileCartBtn = null; // Global reference for mobile cart button
 
-        // Mobile menu functionality
+        // Mobile menu functionality        
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
+            mobileCartBtn = document.getElementById('mobile-cart-btn'); // Set global reference
             
             if (mobileMenuBtn && mobileMenu) {
                 mobileMenuBtn.addEventListener('click', function() {
+                    const isHidden = mobileMenu.classList.contains('hidden');
                     mobileMenu.classList.toggle('hidden');
+                    
+                    // Update aria-expanded for accessibility
+                    mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+                    
+                    // Change icon between hamburger and X
+                    const icon = mobileMenuBtn.querySelector('i');
+                    if (isHidden) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                        mobileMenuBtn.setAttribute('aria-label', 'Menu sluiten');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        mobileMenuBtn.setAttribute('aria-label', 'Menu openen');
+                    }
                 });
             }
+
+            // Smooth scrolling for navigation links and close mobile menu
+            document.querySelectorAll('a[href^="#"], a[href^="index.html#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    // Close mobile menu if open
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        // Reset mobile menu button icon
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                        mobileMenuBtn.setAttribute('aria-label', 'Menu openen');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            });
 
             // Filter functionality
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -641,9 +701,35 @@
             const cartCount = document.getElementById('cart-count');
             const mobileCartCount = document.getElementById('mobile-cart-count');
             const checkoutBtn = document.getElementById('checkout-btn');
+            
+            // Mobile cart elements
+            const mobileCartItems = document.getElementById('mobile-cart-items');
+            const mobileEmptyCart = document.getElementById('mobile-empty-cart');
+            const mobileCartFooter = document.getElementById('mobile-cart-footer');
+            const mobileCartTotal = document.getElementById('mobile-cart-total');
+            const mobileCheckoutBtn = document.getElementById('mobile-checkout-btn');
 
             // Open cart
-            cartBtn.addEventListener('click', openCart);
+            if (cartBtn) {
+                cartBtn.addEventListener('click', openCart);
+            }
+            if (mobileCartBtn) {
+                mobileCartBtn.addEventListener('click', function() {
+                    openCart();
+                    // Close mobile menu when cart is opened
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        // Reset mobile menu button icon
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                            mobileMenuBtn.setAttribute('aria-label', 'Menu openen');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            }
             
             // Close cart
             closeCartBtn.addEventListener('click', closeCart);
@@ -713,11 +799,24 @@
                 const emptyCart = document.getElementById('empty-cart');
                 
                 if (cart.length === 0) {
+                    // Update main cart sidebar
                     cartItemsContainer.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><i class="fas fa-shopping-cart text-4xl mb-4"></i><p>Je winkelwagen is leeg</p></div>';
                     cartCount.classList.add('hidden');
                     mobileCartCount.textContent = '0';
                     cartTotal.textContent = '€0,00';
                     checkoutBtn.disabled = true;
+                    
+                    // Update mobile cart
+                    if (mobileCartItems && mobileEmptyCart && mobileCartFooter && mobileCheckoutBtn) {
+                        mobileCartItems.innerHTML = '<div id="mobile-empty-cart" class="text-gray-300 text-sm text-center py-2">Geen items in winkelwagen</div>';
+                        mobileCartFooter.classList.add('hidden');
+                        mobileCheckoutBtn.disabled = true;
+                    }
+                    
+                    // Reset mobile cart button style
+                    if (mobileCartBtn) {
+                        mobileCartBtn.className = 'text-gold-accent hover:text-yellow-400';
+                    }
                     return;
                 }
 
@@ -727,7 +826,12 @@
                 cartCount.classList.remove('hidden');
                 mobileCartCount.textContent = totalItems;
 
-                // Update cart items
+                // Update mobile cart button style when items are present
+                if (mobileCartBtn && totalItems > 0) {
+                    mobileCartBtn.className = 'text-green-light hover:text-white';
+                }
+
+                // Update main cart sidebar items
                 cartItemsContainer.innerHTML = cart.map(item => `
                     <div class="border-b pb-4 mb-4">
                         <div class="flex items-center space-x-3">
@@ -746,9 +850,30 @@
                     </div>
                 `).join('');
 
-                // Update total
+                // Update mobile cart items
+                if (mobileCartItems && mobileCartFooter && mobileCartTotal && mobileCheckoutBtn) {
+                    mobileCartItems.innerHTML = cart.map(item => `
+                        <div class="flex items-center justify-between bg-green-main bg-opacity-20 rounded p-2">
+                            <div class="flex-1">
+                                <div class="text-white text-sm font-semibold">${item.name}</div>
+                                <div class="text-gray-300 text-xs">${item.quantity}x €${item.price.toFixed(2)}</div>
+                            </div>
+                            <div class="text-gold-accent font-bold text-sm">
+                                €${(item.quantity * item.price).toFixed(2)}
+                            </div>
+                        </div>
+                    `).join('');
+                    
+                    mobileCartFooter.classList.remove('hidden');
+                    mobileCheckoutBtn.disabled = false;
+                }
+
+                // Update totals
                 const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
                 cartTotal.textContent = `€${total.toFixed(2)}`;
+                if (mobileCartTotal) {
+                    mobileCartTotal.textContent = `€${total.toFixed(2)}`;
+                }
                 checkoutBtn.disabled = false;
             }
 
@@ -757,7 +882,7 @@
             window.removeFromCart = removeFromCart;
 
             // Checkout
-            checkoutBtn.addEventListener('click', function() {
+            function performCheckout() {
                 if (cart.length === 0) return;
                 
                 const orderDetails = cart.map(item => `${item.quantity}x ${item.name} - €${(item.price * item.quantity).toFixed(2)}`).join('%0D%0A');
@@ -766,7 +891,14 @@
                 const emailBody = `Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag de volgende bestelling plaatsen voor afhalen in de Abdijwinkel:%0D%0A%0D%0A${orderDetails}%0D%0A%0D%0ATotaal: €${total.toFixed(2)}%0D%0A%0D%0AContactgegevens:%0D%0A- Naam: %0D%0A- E-mail: %0D%0A- Telefoonnummer: %0D%0A- Gewenste ophaaldatum: %0D%0A- Gewenste ophaaltijd: %0D%0A- Opmerkingen: %0D%0A%0D%0AMet vriendelijke groet,`;
                 
                 window.location.href = `mailto:info@brouwerij-rolduc.nl?subject=Webshop Bestelling voor Afhalen - €${total.toFixed(2)}&body=${emailBody}`;
-            });
+            }
+            
+            checkoutBtn.addEventListener('click', performCheckout);
+            
+            // Mobile checkout
+            if (mobileCheckoutBtn) {
+                mobileCheckoutBtn.addEventListener('click', performCheckout);
+            }
         });
     </script>
 </body>

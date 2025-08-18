@@ -981,28 +981,22 @@ checkAgeVerification();
 
 // Bokkenrijders Likeuren Modal
 function initializeLikeurenModal() {
-    const likeurenModalBtn = document.getElementById('likeuren-modal-btn');
-    const likeurenModalBtn2 = document.getElementById('likeuren-modal-btn-2'); // New button
     const likeurenModal = document.getElementById('likeuren-modal');
     const closeLikeurenModal = document.getElementById('close-likeuren-modal');
     const modalToProeflokaal = document.getElementById('modal-to-proeflokaal');
     const modalToWinkel = document.getElementById('modal-to-winkel');
+    
+    // Check if modal exists, if not, just return
+    if (!likeurenModal || !closeLikeurenModal) {
+        return;
+    }
     
     function openModal() {
         likeurenModal.style.display = 'flex';
         likeurenModal.classList.remove('closing');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
-    
-    if (likeurenModalBtn && likeurenModal && closeLikeurenModal) {
-        // Open modal with animation - first button
-        likeurenModalBtn.addEventListener('click', openModal);
-        
-        // Open modal with animation - second button (from collection section)
-        if (likeurenModalBtn2) {
-            likeurenModalBtn2.addEventListener('click', openModal);
-        }
-        
+
         // Close modal with animation
         function closeModal() {
             likeurenModal.classList.add('closing');
@@ -1058,7 +1052,6 @@ function initializeLikeurenModal() {
                 closeModal();
             }
         });
-    }
 }
 
 // Initialize likeuren modal when DOM is loaded

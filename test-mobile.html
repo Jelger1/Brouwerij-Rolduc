@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-main': '#356D52',
+                        'green-dark': '#1E3A2A',
+                        'gold-accent': '#CBA15B'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-green-dark shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-gold-accent text-xl font-bold">Test Menu</div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold-accent p-2 rounded" onclick="toggleMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden bg-green-dark border-t border-gray-600">
+            <div class="px-4 py-3">
+                <a href="#" class="block text-white py-2 border-b border-gray-600">Test Link 1</a>
+                <a href="#" class="block text-white py-2 border-b border-gray-600">Test Link 2</a>
+                <a href="#" class="block text-white py-2 border-b border-gray-600">Test Link 3</a>
+                <a href="#" class="block text-white py-2">Test Link 4</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="pt-20 p-4">
+        <h1 class="text-2xl font-bold mb-4">Mobile Menu Test</h1>
+        <p>Test of het mobile menu werkt op deze eenvoudige pagina.</p>
+        <div id="debug-log" class="mt-4 p-4 bg-gray-200 rounded">
+            <h3 class="font-bold">Debug Log:</h3>
+            <div id="log-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            const logContent = document.getElementById('log-content');
+            const timestamp = new Date().toLocaleTimeString();
+            logContent.innerHTML += `<div>${timestamp}: ${message}</div>`;
+        }
+        
+        function toggleMenu() {
+            log('Toggle menu function called');
+            const menu = document.getElementById('mobile-menu');
+            const btn = document.getElementById('mobile-menu-btn');
+            const icon = btn.querySelector('i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                log('Menu opened');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                log('Menu closed');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            log('DOM loaded');
+            const btn = document.getElementById('mobile-menu-btn');
+            
+            // Add touch event listener too
+            btn.addEventListener('touchend', function(e) {
+                e.preventDefault();
+                log('Touch event triggered');
+                toggleMenu();
+            });
+            
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                log('Click event triggered');
+                toggleMenu();
+            });
+        });
+    </script>
+</body>
+</html>
