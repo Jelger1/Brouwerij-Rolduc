@@ -1058,3 +1058,230 @@ function initializeLikeurenModal() {
 document.addEventListener('DOMContentLoaded', function() {
     initializeLikeurenModal();
 });
+
+// Brouwproces Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const brewProcessBtn = document.getElementById('brew-process-btn');
+    const brewProcessModal = document.getElementById('brewprocess-modal');
+    const closeBrewProcessModal = document.getElementById('close-brewprocess-modal');
+    
+    if (brewProcessBtn && brewProcessModal) {
+        brewProcessBtn.addEventListener('click', function() {
+            brewProcessModal.classList.remove('hidden');
+            brewProcessModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeBrewProcessModal && brewProcessModal) {
+        closeBrewProcessModal.addEventListener('click', function() {
+            brewProcessModal.classList.add('hidden');
+            brewProcessModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+    }
+    
+    // Close modal when clicking outside
+    if (brewProcessModal) {
+        brewProcessModal.addEventListener('click', function(e) {
+            if (e.target === brewProcessModal) {
+                brewProcessModal.classList.add('hidden');
+                brewProcessModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && brewProcessModal.style.display === 'flex') {
+                brewProcessModal.classList.add('hidden');
+                brewProcessModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+});
+
+// Beer Info Modal functionality for homepage carousel
+    const beerInfoData = {
+        'Abdijbier Rolduc Blond': {
+            name: 'Abdijbier Rolduc Blond',
+            description: 'Een heerlijk \'Belgisch blond\' met een tweede vergisting op de fles. Een aangenaam smaakvol abdijbier, afgebrouwen met zoethout waaraan het kleur en karakter dankt. Abdijbier Rolduc is een heerlijke begeleider van diverse lichte gerechten zoals gevogelte en salade.'
+        },
+        'Abdijbier Rolduc Dubbel': {
+            name: 'Abdijbier Rolduc Dubbel',
+            description: 'Dit bovengistend abdijbier dubbel nodigt uit tot genieten. De mooie donkere kleur verwijst naar de monnikspij en de smaak is vol en afgerond met tonen van koffie en pure chocolade. Abdijbier Rolduc Dubbel smaakt prima bij krachtiger gerechten als geroosterd varkensvlees, saté of zoete gerechten met pure chocolade of brownies.'
+        },
+        'Abdijbier Rolduc Tripel': {
+            name: 'Abdijbier Rolduc Tripel',
+            description: 'Een tripel met aroma\'s van rijp geel fruit die terugkomen in de smaak. De fruitige tonen gecombineerd met een licht bittere afdronk brengen dit bijzondere bier mooi in balans. Deze heerlijke tripel is een genieter bij uitstek. Laat de mooie blonde kleur je uitnodigen om een slok te nemen en de intense smaken waar te nemen die dit bier te bieden heeft. Een stukje hemel op aarde.'
+        },
+        'Blonde Non': {
+            name: 'Blonde Non',
+            description: 'Een heerlijk bloemig en fruitig zwaar blond van 8%. Mistig door de vergisting op fles en zeer toegankelijk door zijn heerlijk afgeronde smaken. De Blonde Non is een echte uitdager en past goed bij vlees van de grill of bijvoorbeeld een kaasplank met pittige kazen. Een vriendin voor het leven!'
+        },
+        'Paters Broen': {
+            name: 'Paters Broen',
+            description: 'Een smakelijk zwaar donker bier van 7%. De beter geëeste mouten geven het bier zijn donkere kleur en de smaak van rijp rood fruit, laurier, kersen en tonen van koffie. De afdronk is zacht bitter en smaken blijven lekker lang hangen en doen je verlangen naar de volgende slok.'
+        },
+        'Kloeëster IPA': {
+            name: 'Kloeëster IPA', 
+            description: 'Een zeer verfrissende IPA die zijn fruitige- en citrusaroma\'s dankt aan de aromahoppen waarmee hij gebrouwen wordt. De Kloëster IPA is ver doorvergist en krijgt daardoor een aangenaam droge afdronk met fijne smaken van verse thee. Een heerlijke dorstlesser die gelukkig niet bol staat van de bitterheid!'
+        },
+        'Kølsje Jong': {
+            name: 'Kølsje Jong',
+            description: 'Een bovengistend blond bier naar receptuur uit Keulen. Bovengistend en daardoor fruitiger en smaakvoller dan pils maar net zo doordrinkbaar en dorstlessend. Onze Kølsje Jong heeft een alcoholpercentage van 5,5% en past dus prima bij de borrel, een feest en elk ander gezellig moment!'
+        },
+        'Roda Bier': {
+            name: 'Roda Bier',
+            description: 'Gebrouwen voor de Trots van \'t Zuiden! Krachtig bovengistend blond bier van 7% met een uitgesproken afdronk. Hop en alcohol zorgen ervoor dat dit stevig en stabiel maar ook doordrinkbaar is.'
+        },
+        'Rolducker Zwaere': {
+            name: 'Rolducker Zwaere',
+            description: 'Gebrouwen met honing van onze kloosterbijen die zich het hele seizoen tegoed doen aan de heerlijke bloemen rond de abdij. De honing zorgt voor een zoete noot die het aroma van ons bier helemaal rond maakt. Deze Rolducker Zwaere vertoeft graag in het gezelschap van een rijpe oude creamy kaas of pittig gerijpte smaakvolle kaasfondue. Geboren als winterbier maar inmiddels groter dan één seizoen geworden.'
+        },
+        'Duuvels Weizen': {
+            name: 'Duuvels Weizen',
+            description: '"Waar God is, kan de duivel niet zijn" zegt men. Op Abdij Rolduc echter, waar Pater en Non leven, heeft Lucifer toch zijn kop opgestoken. Maar een beetje ondeugd kan leiden tot iets goeds! Perfect in evenwicht tussen de zachte smaken van tarwe en de fruitige hop is onze Duuvels Weizen. Heerlijk verfrissend en vol van smaak: Goed en Kwaad hebben samen iets moois gebouwd!'
+        },
+        'Zondig Genot': {
+            name: 'Zondig Genot',
+            description: 'Adam en Eva maakten de fout om van de verboden appels te eten. Maar hadden ze geweten dat buiten het paradijs van appels Calvados gemaakt wordt, hadden zij hun exodus beslist veel eerder gemaakt! Geniet van een heerlijk donker bier, vol van smaak aangevuld met de heerlijke smaken van de toegevoegde Calvados.'
+        },
+        'Blonde Non Barrel Aged': {
+            name: 'Blonde Non Barrel Aged',
+            description: 'Onze Blonde Non gerijpt op Frans eiken cognac-vaten. Een complexe barrel-aged Belgian Strong Golden Ale met de zachte vanille- en eikenhouttonen van de cognacvaten gecombineerd met de bloemige en fruitige karakteristieken van het originele bier.'
+        }
+    };
+
+    // Create and add modal to the page if it doesn't exist
+    function createBeerModal() {
+        if (document.getElementById('beer-info-modal-homepage')) return;
+        
+        const modal = document.createElement('div');
+        modal.id = 'beer-info-modal-homepage';
+        modal.className = 'hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4';
+        modal.innerHTML = `
+            <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 id="modal-beer-name-homepage" class="text-2xl font-bold text-green-dark"></h2>
+                        <button id="close-modal-homepage" class="text-gray-500 hover:text-gray-700 text-2xl">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div id="modal-beer-content-homepage" class="text-gray-700 leading-relaxed">
+                        <!-- Beer info content will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // Add event listeners
+        const closeBtn = document.getElementById('close-modal-homepage');
+        closeBtn.addEventListener('click', closeBeerModal);
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeBeerModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeBeerModal();
+            }
+        });
+    }
+
+    function openBeerModal(beerName) {
+        createBeerModal();
+        const modal = document.getElementById('beer-info-modal-homepage');
+        const modalName = document.getElementById('modal-beer-name-homepage');
+        const modalContent = document.getElementById('modal-beer-content-homepage');
+        
+        if (beerInfoData[beerName]) {
+            modalName.textContent = beerInfoData[beerName].name;
+            modalContent.innerHTML = `<p class="text-lg leading-relaxed">${beerInfoData[beerName].description}</p>`;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeBeerModal() {
+        const modal = document.getElementById('beer-info-modal-homepage');
+        if (modal) {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    }
+
+    // Transform carousel beer cards to add "Meer Info" functionality
+    function addBeerInfoButtons() {
+        const carouselCards = document.querySelectorAll('#beer-carousel .beer-card');
+        
+        carouselCards.forEach(card => {
+            const nameElement = card.querySelector('h3');
+            const orderButton = card.querySelector('a[href="webshop.html"], button');
+            
+            if (nameElement && orderButton) {
+                const beerName = nameElement.textContent.trim();
+                
+                // Skip if this is a liqueur or special edition without detailed info needed
+                if (beerName.includes('Duivelsrit') || beerName.includes('Hellevuur') || 
+                    beerName.includes('Gulden Buit') || beerName.includes('Schijproces') ||
+                    beerName.includes('Vrome Tinus') || beerName.includes('Sjwatse Madonna')) {
+                    return; // Skip liqueurs and limited editions that only have proeflokaal access
+                }
+                
+                if (beerInfoData[beerName]) {
+                    const buttonContainer = orderButton.parentElement;                        // Check if info button already exists
+                        if (!buttonContainer.querySelector('.beer-info-btn-carousel')) {
+                            // Find price element
+                            const priceElement = buttonContainer.querySelector('.beer-price');
+                            
+                            if (priceElement) {
+                                // Create a flex container for price and info button
+                                const priceRow = document.createElement('div');
+                                priceRow.className = 'flex justify-between items-center mb-2';
+                                
+                                // Create info button
+                                const infoButton = document.createElement('button');
+                                infoButton.className = 'beer-info-btn-carousel text-green-main text-sm hover:text-green-dark transition-colors underline';
+                                infoButton.innerHTML = '<i class="fas fa-info-circle mr-1"></i>Meer Info';
+                                infoButton.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    openBeerModal(beerName);
+                                });
+                                
+                                // Move price to new container and add info button
+                                priceRow.appendChild(priceElement.cloneNode(true));
+                                priceRow.appendChild(infoButton);
+                                
+                                // Replace original price with new container
+                                buttonContainer.insertBefore(priceRow, priceElement);
+                                buttonContainer.removeChild(priceElement);
+                            }
+                        }
+                }
+            }
+        });
+    }
+
+    // Initialize beer info functionality
+    addBeerInfoButtons();
+    
+    // Re-add buttons when carousel changes (if needed)
+    if (carousel) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'childList') {
+                    addBeerInfoButtons();
+                }
+            });
+        });
+        observer.observe(carousel, { childList: true, subtree: true });
+    }
+
+    // ...existing code...
