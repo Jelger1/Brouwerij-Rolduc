@@ -810,6 +810,135 @@
         let cart = [];
         let mobileCartBtn = null; // Global reference for mobile cart button
 
+        // Global cart functions
+        function removeFromCart(productName) {
+            cart = cart.filter(item => item.name !== productName);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(productName, newQuantity) {
+            const item = cart.find(item => item.name === productName);
+            if (item) {
+                if (newQuantity <= 0) {
+                    removeFromCart(productName);
+                } else {
+                    item.quantity = newQuantity;
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartCount = document.getElementById('cart-count');
+            const mobileCartCount = document.getElementById('mobile-cart-count');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const mobileCartItems = document.getElementById('mobile-cart-items');
+            const mobileEmptyCart = document.getElementById('mobile-empty-cart');
+            const mobileCartFooter = document.getElementById('mobile-cart-footer');
+            const mobileCartTotal = document.getElementById('mobile-cart-total');
+            const mobileCheckoutBtn = document.getElementById('mobile-checkout-btn');
+            
+            if (cart.length === 0) {
+                // Update main cart sidebar
+                if (cartItemsContainer) {
+                    cartItemsContainer.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><i class="fas fa-shopping-cart text-4xl mb-4"></i><p>Je winkelwagen is leeg</p></div>';
+                }
+                if (cartCount) {
+                    cartCount.classList.add('hidden');
+                }
+                if (mobileCartCount) {
+                    mobileCartCount.textContent = '0';
+                }
+                if (cartTotal) {
+                    cartTotal.textContent = '€0,00';
+                }
+                if (checkoutBtn) {
+                    checkoutBtn.disabled = true;
+                }
+                
+                // Update mobile cart
+                if (mobileCartItems && mobileCartFooter && mobileCheckoutBtn) {
+                    mobileCartItems.innerHTML = '<div id="mobile-empty-cart" class="text-gray-300 text-sm text-center py-2">Geen items in winkelwagen</div>';
+                    mobileCartFooter.classList.add('hidden');
+                    mobileCheckoutBtn.disabled = true;
+                }
+                
+                // Reset mobile cart button style
+                if (mobileCartBtn) {
+                    mobileCartBtn.className = 'text-gold-accent hover:text-yellow-400';
+                }
+                return;
+            }
+
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            if (cartCount) {
+                cartCount.textContent = totalItems;
+                cartCount.classList.remove('hidden');
+            }
+            if (mobileCartCount) {
+                mobileCartCount.textContent = totalItems;
+            }
+
+            // Update mobile cart button style when items are present
+            if (mobileCartBtn && totalItems > 0) {
+                mobileCartBtn.className = 'text-green-light hover:text-white';
+            }
+
+            // Update main cart sidebar items
+            if (cartItemsContainer) {
+                cartItemsContainer.innerHTML = cart.map(item => `
+                    <div class="border-b pb-4 mb-4">
+                        <div class="flex items-center space-x-3">
+                            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain">` : '<div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center"><i class="fas fa-image text-gray-400"></i></div>'}
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-green-dark">${item.name}</h4>
+                                <p class="text-sm text-gray-600">€${item.price.toFixed(2)}</p>
+                                <div class="flex items-center space-x-2 mt-2">
+                                    <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">-</button>
+                                    <span class="font-semibold">${item.quantity}</span>
+                                    <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">+</button>
+                                    <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 ml-4"><i class="fas fa-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Update mobile cart items
+            if (mobileCartItems && mobileCartFooter && mobileCartTotal && mobileCheckoutBtn) {
+                mobileCartItems.innerHTML = cart.map(item => `
+                    <div class="flex items-center justify-between bg-green-main bg-opacity-20 rounded p-2">
+                        <div class="flex-1">
+                            <div class="text-white text-sm font-semibold">${item.name}</div>
+                            <div class="text-gray-300 text-xs">${item.quantity}x €${item.price.toFixed(2)}</div>
+                        </div>
+                        <div class="text-gold-accent font-bold text-sm">
+                            €${(item.quantity * item.price).toFixed(2)}
+                        </div>
+                    </div>
+                `).join('');
+                
+                mobileCartFooter.classList.remove('hidden');
+                mobileCheckoutBtn.disabled = false;
+            }
+
+            // Update totals
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            if (cartTotal) {
+                cartTotal.textContent = `€${total.toFixed(2)}`;
+            }
+            if (mobileCartTotal) {
+                mobileCartTotal.textContent = `€${total.toFixed(2)}`;
+            }
+            if (checkoutBtn) {
+                checkoutBtn.disabled = false;
+            }
+        }
+
         // Mobile menu functionality        
         document.addEventListener('DOMContentLoaded', function() {
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -950,6 +1079,39 @@
                 });
             });
 
+            // Checkout functionality
+            checkoutBtn.addEventListener('click', function() {
+                if (cart.length > 0) {
+                    createCheckoutMessage();
+                }
+            });
+
+            mobileCheckoutBtn.addEventListener('click', function() {
+                if (cart.length > 0) {
+                    createCheckoutMessage();
+                }
+            });
+
+            function createCheckoutMessage() {
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                let orderText = "Beste Brouwerij Rolduc,%0D%0A%0D%0AIk wil graag de volgende items bestellen voor afhalen:%0D%0A%0D%0A";
+                
+                cart.forEach(item => {
+                    orderText += `${item.quantity}x ${item.name} - €${(item.price * item.quantity).toFixed(2)}%0D%0A`;
+                });
+                
+                orderText += `%0D%0ATotaal: €${total.toFixed(2)}%0D%0A%0D%0A`;
+                orderText += "Contactgegevens:%0D%0A";
+                orderText += "- Naam: %0D%0A";
+                orderText += "- Telefoonnummer: %0D%0A";
+                orderText += "- Gewenste ophaaltijd: %0D%0A";
+                orderText += "- Eventuele opmerkingen: %0D%0A%0D%0A";
+                orderText += "Met vriendelijke groet";
+                
+                const mailtoLink = `mailto:info@brouwerij-rolduc.nl?subject=Bestelling voor Afhalen&body=${orderText}`;
+                window.location.href = mailtoLink;
+            }
+
             function addToCart(product) {
                 const existingItem = cart.find(item => item.name === product.name);
                 
@@ -971,105 +1133,6 @@
                     btn.innerHTML = originalText;
                     btn.disabled = false;
                 }, 1000);
-            }
-
-            function removeFromCart(productName) {
-                cart = cart.filter(item => item.name !== productName);
-                updateCartDisplay();
-            }
-
-            function updateQuantity(productName, newQuantity) {
-                const item = cart.find(item => item.name === productName);
-                if (item) {
-                    if (newQuantity <= 0) {
-                        removeFromCart(productName);
-                    } else {
-                        item.quantity = newQuantity;
-                        updateCartDisplay();
-                    }
-                }
-            }
-
-            function updateCartDisplay() {
-                const emptyCart = document.getElementById('empty-cart');
-                
-                if (cart.length === 0) {
-                    // Update main cart sidebar
-                    cartItemsContainer.innerHTML = '<div id="empty-cart" class="text-center py-8 text-gray-500"><i class="fas fa-shopping-cart text-4xl mb-4"></i><p>Je winkelwagen is leeg</p></div>';
-                    cartCount.classList.add('hidden');
-                    mobileCartCount.textContent = '0';
-                    cartTotal.textContent = '€0,00';
-                    checkoutBtn.disabled = true;
-                    
-                    // Update mobile cart
-                    if (mobileCartItems && mobileEmptyCart && mobileCartFooter && mobileCheckoutBtn) {
-                        mobileCartItems.innerHTML = '<div id="mobile-empty-cart" class="text-gray-300 text-sm text-center py-2">Geen items in winkelwagen</div>';
-                        mobileCartFooter.classList.add('hidden');
-                        mobileCheckoutBtn.disabled = true;
-                    }
-                    
-                    // Reset mobile cart button style
-                    if (mobileCartBtn) {
-                        mobileCartBtn.className = 'text-gold-accent hover:text-yellow-400';
-                    }
-                    return;
-                }
-
-                // Update cart count
-                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-                cartCount.textContent = totalItems;
-                cartCount.classList.remove('hidden');
-                mobileCartCount.textContent = totalItems;
-
-                // Update mobile cart button style when items are present
-                if (mobileCartBtn && totalItems > 0) {
-                    mobileCartBtn.className = 'text-green-light hover:text-white';
-                }
-
-                // Update main cart sidebar items
-                cartItemsContainer.innerHTML = cart.map(item => `
-                    <div class="border-b pb-4 mb-4">
-                        <div class="flex items-center space-x-3">
-                            ${item.image ? `<img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain">` : '<div class="w-16 h-16 bg-gray-200 rounded flex items-center justify-center"><i class="fas fa-image text-gray-400"></i></div>'}
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-green-dark">${item.name}</h4>
-                                <p class="text-sm text-gray-600">€${item.price.toFixed(2)}</p>
-                                <div class="flex items-center space-x-2 mt-2">
-                                    <button onclick="updateQuantity('${item.name}', ${item.quantity - 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">-</button>
-                                    <span class="font-semibold">${item.quantity}</span>
-                                    <button onclick="updateQuantity('${item.name}', ${item.quantity + 1})" class="bg-gray-200 text-gray-700 w-8 h-8 rounded hover:bg-gray-300">+</button>
-                                    <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 ml-4"><i class="fas fa-trash"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('');
-
-                // Update mobile cart items
-                if (mobileCartItems && mobileCartFooter && mobileCartTotal && mobileCheckoutBtn) {
-                    mobileCartItems.innerHTML = cart.map(item => `
-                        <div class="flex items-center justify-between bg-green-main bg-opacity-20 rounded p-2">
-                            <div class="flex-1">
-                                <div class="text-white text-sm font-semibold">${item.name}</div>
-                                <div class="text-gray-300 text-xs">${item.quantity}x €${item.price.toFixed(2)}</div>
-                            </div>
-                            <div class="text-gold-accent font-bold text-sm">
-                                €${(item.quantity * item.price).toFixed(2)}
-                            </div>
-                        </div>
-                    `).join('');
-                    
-                    mobileCartFooter.classList.remove('hidden');
-                    mobileCheckoutBtn.disabled = false;
-                }
-
-                // Update totals
-                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                cartTotal.textContent = `€${total.toFixed(2)}`;
-                if (mobileCartTotal) {
-                    mobileCartTotal.textContent = `€${total.toFixed(2)}`;
-                }
-                checkoutBtn.disabled = false;
             }
 
             // Transform existing beer cards to add "Meer Info" buttons
