@@ -46,41 +46,44 @@
 <body class="bg-neutral-bg">
     <!-- Navigation -->
     <nav class="bg-green-dark shadow-lg fixed w-full z-50" role="navigation" aria-label="Hoofdnavigatie">
-        <div class="max-w-7xl mx-auto px-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="index.html" class="text-gold-accent logo-font text-2xl" aria-label="Brouwerij Rolduc - Naar homepagina">
+                <div class="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-shrink-0">
+                    <a href="index.html" class="text-gold-accent logo-font text-lg sm:text-xl lg:text-2xl whitespace-nowrap" aria-label="Brouwerij Rolduc - Naar homepagina">
                         Brouwerij Rolduc
                     </a>
+                    <img src="lossebieren/Limburgs-Abdijbier-Logo-Optie-Rond.png" 
+                         alt="Limburgs Abdijbier Keurmerk" 
+                         class="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 object-contain opacity-90 flex-shrink-0">
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8" role="menubar">
-                    <a href="index.html#brouwerij" class="text-white hover:text-gold-accent transition-colors">Brouwerij</a>
-                    <a href="index.html#distilleerderij" class="text-white hover:text-gold-accent transition-colors">Distilleerderij</a>
-                    <a href="index.html#proeflokaal" class="text-white hover:text-gold-accent transition-colors">Proeflokaal</a>
-                    <a href="index.html#winkel" class="text-white hover:text-gold-accent transition-colors">Winkel</a>
-                    <a href="index.html#horeca" class="text-white hover:text-gold-accent transition-colors">Horeca</a>
-                    <a href="webshop.html" class="text-gold-accent font-semibold">Webshop</a>
+                <div class="hidden lg:flex space-x-6 xl:space-x-8 flex-1 justify-center" role="menubar">
+                    <a href="index.html#brouwerij" class="text-white hover:text-gold-accent transition-colors whitespace-nowrap">Brouwerij</a>
+                    <a href="index.html#distilleerderij" class="text-white hover:text-gold-accent transition-colors whitespace-nowrap">Distilleerderij</a>
+                    <a href="index.html#proeflokaal" class="text-white hover:text-gold-accent transition-colors whitespace-nowrap">Proeflokaal</a>
+                    <a href="index.html#winkel" class="text-white hover:text-gold-accent transition-colors whitespace-nowrap">Winkel</a>
+                    <a href="index.html#horeca" class="text-white hover:text-gold-accent transition-colors whitespace-nowrap">Horeca</a>
+                    <a href="webshop.html" class="text-gold-accent font-semibold whitespace-nowrap">Webshop</a>
                 </div>
                 
                 <!-- Cart & CTA -->
-                <div class="hidden md:flex items-center space-x-4">
+                <div class="hidden md:flex items-center space-x-3 lg:space-x-4 flex-shrink-0">
                     <div class="relative">
-                        <button id="cart-btn" class="text-white hover:text-gold-accent transition-colors relative">
-                            <i class="fas fa-shopping-cart text-xl"></i>
+                        <button id="cart-btn" class="text-white hover:text-gold-accent transition-colors relative p-1">
+                            <i class="fas fa-shopping-cart text-lg lg:text-xl"></i>
                             <span id="cart-count" class="absolute -top-2 -right-2 bg-gold-accent text-green-dark text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold hidden">0</span>
                         </button>
                     </div>
-                    <a href="index.html#proeflokaal" class="bg-gold-accent text-green-dark px-4 py-2 rounded-lg hover:bg-yellow-400 transition-colors font-semibold">
+                    <a href="index.html#proeflokaal" class="bg-gold-accent text-green-dark px-3 py-2 lg:px-4 lg:py-2 rounded-lg hover:bg-yellow-400 transition-colors font-semibold text-sm lg:text-base whitespace-nowrap">
                         Reserveer Nu
                     </a>
                 </div>
                 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white hover:text-gold-accent focus:outline-none focus:text-gold-accent" aria-label="Menu openen" aria-expanded="false">
+                <div class="md:hidden flex-shrink-0">
+                    <button id="mobile-menu-btn" class="text-white hover:text-gold-accent focus:outline-none focus:text-gold-accent p-2" aria-label="Menu openen" aria-expanded="false">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
@@ -88,29 +91,29 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-green-dark border-t border-green-main z-50">
-            <div class="px-4 pt-2 pb-3 space-y-1">>
-                <a href="index.html#brouwerij" class="block text-white hover:text-gold-accent py-2">Brouwerij</a>
-                <a href="index.html#distilleerderij" class="block text-white hover:text-gold-accent py-2">Distilleerderij</a>
-                <a href="index.html#proeflokaal" class="block text-white hover:text-gold-accent py-2">Proeflokaal</a>
-                <a href="index.html#winkel" class="block text-white hover:text-gold-accent py-2">Winkel</a>
-                <a href="index.html#horeca" class="block text-white hover:text-gold-accent py-2">Horeca</a>
-                <a href="webshop.html" class="block text-gold-accent font-semibold py-2">Webshop</a>
+        <div id="mobile-menu" class="hidden lg:hidden bg-green-dark border-t border-green-main z-50">
+            <div class="px-4 pt-2 pb-3 space-y-1 max-h-screen overflow-y-auto">
+                <a href="index.html#brouwerij" class="block text-white hover:text-gold-accent py-2 border-b border-green-main border-opacity-30">Brouwerij</a>
+                <a href="index.html#distilleerderij" class="block text-white hover:text-gold-accent py-2 border-b border-green-main border-opacity-30">Distilleerderij</a>
+                <a href="index.html#proeflokaal" class="block text-white hover:text-gold-accent py-2 border-b border-green-main border-opacity-30">Proeflokaal</a>
+                <a href="index.html#winkel" class="block text-white hover:text-gold-accent py-2 border-b border-green-main border-opacity-30">Winkel</a>
+                <a href="index.html#horeca" class="block text-white hover:text-gold-accent py-2 border-b border-green-main border-opacity-30">Horeca</a>
+                <a href="webshop.html" class="block text-gold-accent font-semibold py-2 border-b border-green-main border-opacity-30">Webshop</a>
                 
                 <!-- Mobile Cart Section -->
                 <div class="border-t border-green-main pt-4 mt-4">
                     <div class="flex items-center justify-between mb-3">
-                        <h3 class="text-white font-semibold flex items-center">
+                        <h3 class="text-white font-semibold flex items-center text-sm">
                             <i class="fas fa-shopping-cart mr-2"></i>
                             Winkelwagen (<span id="mobile-cart-count">0</span>)
                         </h3>
-                        <button id="mobile-cart-btn" class="text-gold-accent hover:text-yellow-400">
+                        <button id="mobile-cart-btn" class="text-gold-accent hover:text-yellow-400 p-1">
                             <i class="fas fa-eye"></i>
                         </button>
                     </div>
                     
                     <!-- Mobile Cart Items -->
-                    <div id="mobile-cart-items" class="space-y-2 mb-3 max-h-40 overflow-y-auto">
+                    <div id="mobile-cart-items" class="space-y-2 mb-3 max-h-32 overflow-y-auto">
                         <div id="mobile-empty-cart" class="text-gray-300 text-sm text-center py-2">
                             Geen items in winkelwagen
                         </div>
@@ -118,13 +121,20 @@
                     
                     <!-- Mobile Cart Total & Checkout -->
                     <div id="mobile-cart-footer" class="hidden">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="text-white font-semibold">Totaal:</span>
+                        <div class="flex justify-between items-center mb-3">
+                            <span class="text-white font-semibold text-sm">Totaal:</span>
                             <span id="mobile-cart-total" class="text-gold-accent font-bold">€0,00</span>
                         </div>
-                        <button id="mobile-checkout-btn" class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors disabled:opacity-50" disabled>
+                        <button id="mobile-checkout-btn" class="w-full bg-gold-accent text-green-dark px-4 py-2 rounded-lg font-semibold hover:bg-yellow-400 transition-colors disabled:opacity-50 text-sm" disabled>
                             Bestellen voor Afhalen
                         </button>
+                    </div>
+                    
+                    <!-- Additional CTA for Mobile -->
+                    <div class="border-t border-green-main pt-4 mt-4">
+                        <a href="index.html#proeflokaal" class="block w-full bg-gold-accent text-green-dark px-4 py-3 rounded-lg hover:bg-yellow-400 transition-colors font-semibold text-center text-sm">
+                            Reserveer Nu
+                        </a>
                     </div>
                 </div>
             </div>
@@ -541,59 +551,103 @@
                 <h2 class="text-3xl font-bold text-green-dark mb-8 text-center">Merchandise</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <!-- T-Shirt -->
+                    <!-- T-Shirt met Logo Keuze -->
                     <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
-                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
-                            <i class="fas fa-tshirt text-gold-accent text-6xl"></i>
+                        <div class="aspect-square bg-gray-100 overflow-hidden relative group">
+                            <!-- T-shirt Image Slideshow -->
+                            <div class="tshirt-slideshow relative w-full h-full">
+                                <img src="assets/BrouwerijRolduc_Tshirt_20250901-8.jpg" 
+                                     alt="Brouwerij Rolduc T-Shirt Achterkant" 
+                                     class="tshirt-slide w-full h-full object-contain absolute inset-0 transition-opacity duration-500">
+                                <img src="assets/BrouwerijRolduc_Tshirt_20250901-7.jpg" 
+                                     alt="Brouwerij Rolduc T-Shirt Voorkant" 
+                                     class="tshirt-slide w-full h-full object-contain absolute inset-0 transition-opacity duration-500 opacity-0">
+                            </div>
+                            
+                            <!-- Slideshow Controls -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                <button class="tshirt-dot w-2 h-2 rounded-full bg-white bg-opacity-70 hover:bg-opacity-100 transition-all" data-slide="0"></button>
+                                <button class="tshirt-dot w-2 h-2 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all" data-slide="1"></button>
+                            </div>
+                            
+                            <!-- Feature Badge -->
+                            <div class="absolute top-2 right-2 bg-gold-accent text-green-dark px-2 py-1 rounded-full text-xs font-semibold">
+                                Customize
+                            </div>
                         </div>
                         <div class="p-4">
-                            <h3 class="text-lg font-bold text-green-dark mb-2">Brouwerij Rolduc T-Shirt</h3>
-                            <p class="text-sm text-gray-600 mb-2">100% Katoen - Diverse maten</p>
-                            <p class="text-xs text-gray-500 mb-3">Comfortabel T-shirt met brouwerijlogo</p>
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Brouwerij Rolduc Kleding</h3>
+                            <p class="text-sm text-gray-600 mb-2">T-Shirt of Hoodie - Zwart - Diverse maten</p>
+                            <p class="text-xs text-gray-500 mb-2">Kies je favoriete bierlogo als backprint!</p>
+                            <div class="bg-gold-accent bg-opacity-10 p-2 rounded mb-3">
+                                <p class="text-xs text-green-dark font-semibold">✨ 7 verschillende logo's beschikbaar</p>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div class="text-sm text-green-dark">
+                                    <p class="font-bold">T-Shirt: <span class="text-gold-accent">€24,95</span></p>
+                                    <p class="font-bold">Hoodie: <span class="text-gold-accent">€35,00</span></p>
+                                </div>
+                                <button id="clothing-customize-btn" class="bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors">
+                                    <i class="fas fa-palette mr-1"></i>Customize
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bierglas -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
+                        <div class="aspect-square bg-gray-100 overflow-hidden flex items-center justify-center p-4">
+                            <img src="assets/BrouwerijRolduc_20250901-15.jpg" 
+                                 alt="Brouwerij Rolduc Bierglas" 
+                                 class="w-full h-full object-contain">
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">Brouwerij Rolduc Bierglas</h3>
+                            <p class="text-sm text-gray-600 mb-2">33cl - Officieel bierglas</p>
+                            <p class="text-xs text-gray-500 mb-3">Met gravering Brouwerij Rolduc logo</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xl font-bold text-gold-accent">€7,95</span>
+                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                        data-product='{"name":"Brouwerij Rolduc Bierglas","price":7.95,"image":"assets/BrouwerijRolduc_20250901-15.jpg","category":"merchandise"}'>
+                                    <i class="fas fa-plus mr-1"></i>Toevoegen
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Geprinte Non -->
+                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
+                        <div class="aspect-square bg-gray-100 overflow-hidden flex items-center justify-center p-4 relative">
+                            <img src="assets/3d-non-3djs.jpeg" 
+                                 alt="3D Geprinte Non - Felroze" 
+                                 class="w-full h-full object-contain">
+                            <!-- Collectors Badge -->
+                            <div class="absolute top-2 right-2 bg-gold-accent text-green-dark px-2 py-1 rounded-full text-xs font-semibold">
+                                Collectors Item
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-bold text-green-dark mb-2">3D Geprinte Non</h3>
+                            <p class="text-sm text-gray-600 mb-2">15 cm hoog - Felroze</p>
+                            <p class="text-xs text-gray-500 mb-2">Een collectors item</p>
+                            <div class="bg-pink-100 p-2 rounded mb-3">
+                                <p class="text-xs text-green-dark font-semibold">
+                                    <i class="fab fa-instagram mr-1"></i>
+                                    Door @jelgers3d
+                                </p>
+                            </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-xl font-bold text-gold-accent">€19,95</span>
-                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
-                                        data-product='{"name":"Brouwerij Rolduc T-Shirt","price":19.95,"image":"","category":"merchandise"}'>
-                                    <i class="fas fa-plus mr-1"></i>Toevoegen
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bierglas Set -->
-                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
-                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
-                            <i class="fas fa-wine-glass text-gold-accent text-6xl"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-green-dark mb-2">Rolduc Bierglazen Set</h3>
-                            <p class="text-sm text-gray-600 mb-2">2 glazen - 33cl</p>
-                            <p class="text-xs text-gray-500 mb-3">Officiële bierglazen met logo</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-xl font-bold text-gold-accent">€24,95</span>
-                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
-                                        data-product='{"name":"Rolduc Bierglazen Set","price":24.95,"image":"","category":"merchandise"}'>
-                                    <i class="fas fa-plus mr-1"></i>Toevoegen
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cadeaupakket -->
-                    <div class="product-card bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="merchandise">
-                        <div class="aspect-square bg-gray-100 flex items-center justify-center">
-                            <i class="fas fa-gift text-gold-accent text-6xl"></i>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="text-lg font-bold text-green-dark mb-2">Rolduc Cadeaupakket</h3>
-                            <p class="text-sm text-gray-600 mb-2">4 bieren + glas + chocolade</p>
-                            <p class="text-xs text-gray-500 mb-3">Perfect cadeau voor bierliefhebbers</p>
-                            <div class="flex justify-between items-center">
-                                <span class="text-xl font-bold text-gold-accent">€34,95</span>
-                                <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
-                                        data-product='{"name":"Rolduc Cadeaupakket","price":34.95,"image":"","category":"merchandise"}'>
-                                    <i class="fas fa-plus mr-1"></i>Toevoegen
-                                </button>
+                                <div class="flex space-x-2">
+                                    <a href="https://www.instagram.com/jelgers3d/" target="_blank" rel="noopener noreferrer" 
+                                       class="bg-pink-500 text-white px-3 py-2 rounded hover:bg-pink-600 transition-colors text-sm">
+                                        <i class="fab fa-instagram mr-1"></i>Info
+                                    </a>
+                                    <button class="add-to-cart bg-green-main text-white px-4 py-2 rounded hover:bg-green-dark transition-colors" 
+                                            data-product='{"name":"3D Geprinte Non (15cm)","price":19.95,"image":"assets/3d-non-3djs.jpeg","category":"merchandise"}'>
+                                        <i class="fas fa-plus mr-1"></i>Toevoegen
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -950,6 +1004,13 @@
                     const isHidden = mobileMenu.classList.contains('hidden');
                     mobileMenu.classList.toggle('hidden');
                     
+                    // Update body class for scroll prevention
+                    if (isHidden) {
+                        document.body.classList.add('menu-open');
+                    } else {
+                        document.body.classList.remove('menu-open');
+                    }
+                    
                     // Update aria-expanded for accessibility
                     mobileMenuBtn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
                     
@@ -973,6 +1034,7 @@
                     // Close mobile menu if open
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
+                        document.body.classList.remove('menu-open');
                         // Reset mobile menu button icon
                         const icon = mobileMenuBtn.querySelector('i');
                         icon.classList.remove('fa-times');
@@ -1043,6 +1105,7 @@
                     // Close mobile menu when cart is opened
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
+                        document.body.classList.remove('menu-open');
                         // Reset mobile menu button icon
                         const icon = mobileMenuBtn.querySelector('i');
                         if (icon) {
@@ -1123,16 +1186,20 @@
                 
                 updateCartDisplay();
                 
-                // Visual feedback
-                const btn = event.target.closest('.add-to-cart');
-                const originalText = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check mr-1"></i>Toegevoegd';
-                btn.disabled = true;
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalText;
-                    btn.disabled = false;
-                }, 1000);
+                // Visual feedback (only if called from a button click)
+                if (event && event.target) {
+                    const btn = event.target.closest('.add-to-cart');
+                    if (btn) {
+                        const originalText = btn.innerHTML;
+                        btn.innerHTML = '<i class="fas fa-check mr-1"></i>Toegevoegd';
+                        btn.disabled = true;
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                        }, 1000);
+                    }
+                }
             }
 
             // Transform existing beer cards to add "Meer Info" buttons
@@ -1237,7 +1304,369 @@
                     document.body.style.overflow = 'auto';
                 }
             });
+            
+            // Clothing Customization Modal Functionality
+            const tshirtModal = document.getElementById('tshirt-modal');
+            const clothingCustomizeBtn = document.getElementById('clothing-customize-btn');
+            const closeTshirtModal = document.getElementById('close-tshirt-modal');
+            const productTypeOptions = document.querySelectorAll('.product-type-option');
+            const logoOptions = document.querySelectorAll('.logo-option');
+            const sizeOptions = document.querySelectorAll('.size-option');
+            const addCustomTshirt = document.getElementById('add-custom-tshirt');
+            const selectedLogoPreview = document.getElementById('selected-logo-preview');
+            const previewTitle = document.getElementById('preview-title');
+            const previewIcon = document.getElementById('preview-icon');
+            const priceInfo = document.getElementById('price-info');
+            
+            let selectedLogo = null;
+            let selectedSize = null;
+            let currentProductType = null; // 'tshirt' or 'hoodie'
+            
+            // Open customization modal
+            if (clothingCustomizeBtn) {
+                clothingCustomizeBtn.addEventListener('click', function() {
+                    tshirtModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                    resetModal();
+                });
+            }
+            
+            // Product type selection
+            productTypeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove previous selection
+                    productTypeOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10'));
+                    
+                    // Add selection to clicked option
+                    this.classList.add('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10');
+                    
+                    currentProductType = this.dataset.type;
+                    updatePreview();
+                    checkCanAddToCart();
+                });
+            });
+            
+            // Update preview based on selected product type
+            function updatePreview() {
+                if (currentProductType === 'hoodie') {
+                    previewTitle.textContent = 'Hoodie Preview';
+                    previewIcon.className = 'fas fa-tshirt text-green-dark text-8xl relative';
+                    previewIcon.innerHTML = '<i class="fas fa-circle text-2xl absolute -top-2 -right-2" style="font-size: 20px;"></i>';
+                    priceInfo.innerHTML = '<p class="text-lg font-bold">€35,00</p><p class="text-sm opacity-90">Hoodie - Zwart - Diverse maten</p>';
+                } else if (currentProductType === 'tshirt') {
+                    previewTitle.textContent = 'T-Shirt Preview';
+                    previewIcon.className = 'fas fa-tshirt text-green-dark text-8xl';
+                    previewIcon.innerHTML = '';
+                    priceInfo.innerHTML = '<p class="text-lg font-bold">€24,95</p><p class="text-sm opacity-90">T-Shirt - Zwart - Diverse maten</p>';
+                } else {
+                    previewTitle.textContent = 'Selecteer eerst een product';
+                    previewIcon.className = 'fas fa-question text-green-dark text-8xl';
+                    previewIcon.innerHTML = '';
+                    priceInfo.innerHTML = '<p class="text-lg font-bold">Selecteer een product</p><p class="text-sm opacity-90">T-Shirt of Hoodie</p>';
+                }
+            }
+            
+            // Reset modal to initial state
+            function resetModal() {
+                currentProductType = null;
+                selectedLogo = null;
+                selectedSize = null;
+                
+                productTypeOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10'));
+                logoOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10'));
+                sizeOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'text-white'));
+                selectedLogoPreview.innerHTML = '<i class="fas fa-image text-gray-400 text-sm"></i>';
+                
+                updatePreview();
+                checkCanAddToCart();
+            }
+            
+            // Close modal
+            if (closeTshirtModal) {
+                closeTshirtModal.addEventListener('click', function() {
+                    tshirtModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+            
+            // Logo selection
+            logoOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove previous selection
+                    logoOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10'));
+                    
+                    // Add selection to clicked option
+                    this.classList.add('border-gold-accent', 'bg-gold-accent', 'bg-opacity-10');
+                    
+                    selectedLogo = this.dataset.logo;
+                    const logoImg = this.querySelector('img').src;
+                    const logoName = this.querySelector('p').textContent;
+                    
+                    // Update preview
+                    selectedLogoPreview.innerHTML = `<img src="${logoImg}" alt="${logoName}" class="w-full h-full object-contain rounded-full">`;
+                    
+                    checkCanAddToCart();
+                });
+            });
+            
+            // Size selection
+            sizeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove previous selection
+                    sizeOptions.forEach(opt => opt.classList.remove('border-gold-accent', 'bg-gold-accent', 'text-white'));
+                    
+                    // Add selection to clicked option
+                    this.classList.add('border-gold-accent', 'bg-gold-accent', 'text-white');
+                    
+                    selectedSize = this.dataset.size;
+                    checkCanAddToCart();
+                });
+            });
+            
+            // Check if can add to cart
+            function checkCanAddToCart() {
+                if (currentProductType && selectedLogo && selectedSize) {
+                    addCustomTshirt.disabled = false;
+                } else {
+                    addCustomTshirt.disabled = true;
+                }
+            }
+            
+            // Add custom product to cart
+            if (addCustomTshirt) {
+                addCustomTshirt.addEventListener('click', function() {
+                    if (currentProductType && selectedLogo && selectedSize) {
+                        const logoName = document.querySelector(`[data-logo="${selectedLogo}"] p`).textContent;
+                        
+                        let customProduct;
+                        if (currentProductType === 'hoodie') {
+                            customProduct = {
+                                name: `Hoodie ${logoName} (${selectedSize})`,
+                                price: 35.00,
+                                image: document.querySelector(`[data-logo="${selectedLogo}"] img`).src,
+                                category: 'merchandise',
+                                customization: {
+                                    type: 'hoodie',
+                                    logo: selectedLogo,
+                                    logoName: logoName,
+                                    size: selectedSize
+                                }
+                            };
+                        } else {
+                            customProduct = {
+                                name: `T-Shirt ${logoName} (${selectedSize})`,
+                                price: 24.95,
+                                image: document.querySelector(`[data-logo="${selectedLogo}"] img`).src,
+                                category: 'merchandise',
+                                customization: {
+                                    type: 'tshirt',
+                                    logo: selectedLogo,
+                                    logoName: logoName,
+                                    size: selectedSize
+                                }
+                            };
+                        }
+                        
+                        // Add to cart using the proper function
+                        addToCart(customProduct);
+                        
+                        // Close modal
+                        tshirtModal.classList.add('hidden');
+                        document.body.style.overflow = 'auto';
+                        
+                        // Reset modal
+                        resetModal();
+                        
+                        // Show success message
+                        const productName = currentProductType === 'hoodie' ? 'Hoodie' : 'T-shirt';
+                        alert(`Custom ${productName} toegevoegd aan winkelwagen!`);
+                    }
+                });
+            }
+            
+            // Close T-shirt modal with escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && !tshirtModal.classList.contains('hidden')) {
+                    tshirtModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
         });
     </script>
+
+    <!-- T-Shirt Customization Modal -->
+    <div id="tshirt-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-3xl font-bold text-green-dark">Customize je Kleding</h2>
+                    <button id="close-tshirt-modal" class="text-gray-500 hover:text-gray-700 text-2xl">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <!-- Product Type Selection -->
+                <div class="mb-6">
+                    <h3 class="text-lg font-bold text-green-dark mb-3">Kies je Product</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="product-type-option border-2 border-gray-300 rounded-lg p-4 text-center hover:border-gold-accent transition-colors" data-type="tshirt">
+                            <i class="fas fa-tshirt text-3xl text-green-dark mb-2"></i>
+                            <p class="font-semibold text-green-dark">T-Shirt</p>
+                            <p class="text-gold-accent font-bold">€24,95</p>
+                        </button>
+                        <button class="product-type-option border-2 border-gray-300 rounded-lg p-4 text-center hover:border-gold-accent transition-colors" data-type="hoodie">
+                            <div class="relative text-3xl text-green-dark mb-2">
+                                <i class="fas fa-tshirt"></i>
+                                <i class="fas fa-circle text-xs absolute -top-1 -right-1" style="font-size: 8px;"></i>
+                            </div>
+                            <p class="font-semibold text-green-dark">Hoodie</p>
+                            <p class="text-gold-accent font-bold">€35,00</p>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Product Preview -->
+                    <div class="text-center">
+                        <h3 id="preview-title" class="text-xl font-bold text-green-dark mb-4">Selecteer eerst een product</h3>
+                        <div class="bg-gray-100 rounded-lg p-8 mb-4">
+                            <div class="relative">
+                                <i id="preview-icon" class="fas fa-question text-green-dark text-8xl"></i>
+                                <div id="selected-logo-preview" class="absolute bottom-0 right-0 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg">
+                                    <i class="fas fa-image text-gray-400 text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="price-info" class="bg-green-dark text-white p-4 rounded-lg">
+                            <p class="text-lg font-bold">Selecteer een product</p>
+                            <p class="text-sm opacity-90">T-Shirt of Hoodie</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Logo Selection -->
+                    <div>
+                        <h3 class="text-xl font-bold text-green-dark mb-4">Kies je Backprint Logo</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="zondig-genot">
+                                <img src="assets/zondig-genot-logo.jpg" alt="Zondig Genot Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Zondig Genot</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="blonde-non">
+                                <img src="assets/blonde-non-logo.jpg" alt="Blonde Non Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Blonde Non</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="duuvels-weizen">
+                                <img src="assets/duuvels-weizen-logo.jpg" alt="Duuvels Weizen Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Duuvels Weizen</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="kloeester-ipa">
+                                <img src="assets/kloeester-ipa-logo.jpg" alt="Kloeester IPA Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Kloëster IPA</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="kolsje-jong">
+                                <img src="assets/kolsje-jong-logo.jpg" alt="Kölsje Jong Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Kölsje Jong</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="paters-broen">
+                                <img src="assets/paters-broen-logo.jpg" alt="Paters Broen Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Paters Broen</p>
+                            </div>
+                            
+                            <div class="logo-option bg-white border-2 border-gray-200 rounded-lg p-4 cursor-pointer hover:border-gold-accent transition-colors" data-logo="rolducker-zwaere">
+                                <img src="assets/rolducker-zwaere-logo.jpg" alt="Rolducker Zwaere Logo" class="w-full h-32 object-contain mb-3">
+                                <p class="text-sm text-center text-gray-700 font-semibold">Rolducker Zwaere</p>
+                            </div>
+                            
+                        </div>
+                        
+                        <!-- Size Selection -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-bold text-green-dark mb-3">Selecteer Maat</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="S">S</button>
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="M">M</button>
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="L">L</button>
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="XL">XL</button>
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="XXL">XXL</button>
+                                <button class="size-option px-4 py-2 border-2 border-gray-200 rounded hover:border-gold-accent transition-colors" data-size="XXXL">XXXL</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Add to Cart -->
+                        <button id="add-custom-tshirt" class="w-full bg-gold-accent text-green-dark px-6 py-3 rounded-lg font-bold text-lg hover:bg-yellow-400 transition-colors disabled:opacity-50" disabled>
+                            <i class="fas fa-cart-plus mr-2"></i>Voeg Toe aan Winkelwagen
+                        </button>
+                        
+                        <p class="text-xs text-gray-500 mt-3 text-center">
+                            Selecteer een logo en maat om je custom T-shirt toe te voegen
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // T-shirt Slideshow Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.tshirt-slide');
+            const dots = document.querySelectorAll('.tshirt-dot');
+            let currentSlide = 0;
+            let slideInterval;
+
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                });
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('bg-opacity-100');
+                        dot.classList.remove('bg-opacity-50', 'bg-opacity-70');
+                    } else {
+                        dot.classList.add('bg-opacity-50');
+                        dot.classList.remove('bg-opacity-100', 'bg-opacity-70');
+                    }
+                });
+                
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function startContinuousLoop() {
+                slideInterval = setInterval(nextSlide, 2500); // Faster loop - every 2.5 seconds
+            }
+
+            // Initialize first slide (achterkant first)
+            showSlide(0);
+            
+            // Start continuous loop immediately
+            startContinuousLoop();
+
+            // Optional: Add click handlers to dots for manual control (but don't stop the loop)
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    // Loop continues without interruption
+                });
+            });
+
+            // No pause on hover - continuous loop
+            // Removed mouse event listeners to maintain continuous loop
+        });
+    </script>
+
 </body>
 </html>
