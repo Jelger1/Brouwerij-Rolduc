@@ -290,12 +290,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Reserve Button
+    // Reserve Button - Disabled to use direct mailto link
     const reserveBtn = document.getElementById('reserve-btn');
     if (reserveBtn) {
-        reserveBtn.addEventListener('click', function() {
-            showReservationModal();
-        });
+        // Allow default mailto link behavior by not adding click listener
+        // reserveBtn.addEventListener('click', function() {
+        //     showReservationModal();
+        // });
     }
 
     // Hero Buttons
@@ -1057,49 +1058,6 @@ function initializeLikeurenModal() {
 // Initialize likeuren modal when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initializeLikeurenModal();
-});
-
-// Brouwproces Modal functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const brewProcessBtn = document.getElementById('brew-process-btn');
-    const brewProcessModal = document.getElementById('brewprocess-modal');
-    const closeBrewProcessModal = document.getElementById('close-brewprocess-modal');
-    
-    if (brewProcessBtn && brewProcessModal) {
-        brewProcessBtn.addEventListener('click', function() {
-            brewProcessModal.classList.remove('hidden');
-            brewProcessModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        });
-    }
-    
-    if (closeBrewProcessModal && brewProcessModal) {
-        closeBrewProcessModal.addEventListener('click', function() {
-            brewProcessModal.classList.add('hidden');
-            brewProcessModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-    }
-    
-    // Close modal when clicking outside
-    if (brewProcessModal) {
-        brewProcessModal.addEventListener('click', function(e) {
-            if (e.target === brewProcessModal) {
-                brewProcessModal.classList.add('hidden');
-                brewProcessModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && brewProcessModal.style.display === 'flex') {
-                brewProcessModal.classList.add('hidden');
-                brewProcessModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
-    }
 });
 
 // Beer Info Modal functionality for homepage carousel

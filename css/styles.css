@@ -368,6 +368,69 @@ body {
     }
 }
 
+/* Header Responsive Improvements */
+@media (max-width: 1024px) {
+    /* Ensure proper spacing on medium screens */
+    nav .max-w-7xl {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Prevent logo text wrapping */
+    .logo-font {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile header adjustments */
+    nav .h-16 {
+        min-height: 4rem;
+        height: auto;
+        padding: 0.5rem 0;
+    }
+    
+    /* Ensure mobile menu doesn't overlap content */
+    #mobile-menu {
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
+    }
+    
+    /* Logo adjustments for smaller screens */
+    .logo-font {
+        font-size: 1.25rem !important;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Extra small screens */
+    .logo-font {
+        font-size: 1.1rem !important;
+    }
+    
+    nav .max-w-7xl {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+}
+
+/* Prevent content jumping when menu opens */
+@media (max-width: 1023px) {
+    body.menu-open {
+        overflow: hidden;
+    }
+    
+    #mobile-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--green-dark);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     *,
