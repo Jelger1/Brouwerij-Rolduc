@@ -37,9 +37,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
                 
-                // Close mobile menu if open
+                // Close mobile menu if open and reset hamburger icon
                 if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
+                    
+                    // Reset hamburger icon from X back to bars
+                    if (mobileMenuBtn) {
+                        const icon = mobileMenuBtn.querySelector('i');
+                        if (icon) {
+                            icon.classList.remove('fa-times');
+                            icon.classList.add('fa-bars');
+                            mobileMenuBtn.setAttribute('aria-label', 'Menu openen');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        }
+                    }
                 }
             }
         });
